@@ -1,0 +1,5 @@
+101|Standard|Ready|false
+102|Deluxe|Dirty|false
+201|Standard|Cleaning|false
+202|Deluxe|Inspected|false
+203|Deluxe|Ready|true
