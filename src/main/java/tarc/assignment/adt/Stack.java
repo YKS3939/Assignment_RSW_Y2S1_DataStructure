@@ -1,4 +1,4 @@
-package tarc.assignment.boundary.adt;
+package tarc.assignment.adt;
 
 //don't use first
 public class Stack<T>{
