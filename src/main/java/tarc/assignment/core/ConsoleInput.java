@@ -25,4 +25,9 @@ public class ConsoleInput {
     public void pressAnyKey() {
         scanner.nextLine();
     }
+
+    public String readString(String prompt){
+        ConsolePrint.print(prompt);
+        return scanner.nextLine();
+    }
 }
