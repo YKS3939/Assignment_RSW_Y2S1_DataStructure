@@ -17,6 +17,9 @@ public class custSearch implements UI {
 
         if(guestId.length()==8){
             ConsolePrint.success("Your id is: "+guestId);
+            ConsolePrint.warning("Haven't finish yet");
+            //TODO: need to connect to control part and entity part
+
         }else {
             ConsolePrint.error("Must be 8 digit! Press [ENTER] key to continue....");
             app.input().pressAnyKey();

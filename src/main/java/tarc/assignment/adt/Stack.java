@@ -7,22 +7,11 @@ public class Stack<T>{
 
     }
 //
-//    public void push(){
-//
-//    }
-//
-//    public T pop(){
-//
-//    }
-//
-//    public boolean isEmpty(){
-//
-//    }
-//
-//    public T peek(){
-//
-//    }
-//    public void clear(){
-//
-//    }
+//    public void push()
+//    public T pop()
+//    public boolean isEmpty()
+//    public T peek()
+//    public void clear()
+
+    //TODO: House Keeping
 }
