@@ -7,9 +7,10 @@ public class Stack<T>{
 
     }
 //
-//    public void push()
+//    public void push(T item)
 //    public T pop()
 //    public boolean isEmpty()
+//    public boolean isFull()
 //    public T peek()
 //    public void clear()
 
