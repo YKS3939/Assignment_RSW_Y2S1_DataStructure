@@ -2,12 +2,14 @@ package tarc.assignment.adt;
 
 public class List <T>{
     //Todo: who can who do
-//    public void add(T item)
-//    public void insert(int index, T item)
-//    public T remove(int index)
-//    public T get(int index)
-//    public T set(int index, T item)
-//    public int size()
-//    public boolean isEmpty()
-//    public void clear()
+    //public void add(T newEntry)
+    //public boolean add(Integer newPosition, T newEntry)
+    //public T remove(Integer givenPosition)
+    //clear()
+    //boolean replace(Integer givenPosition, T newEntry)
+    //T getEntry(Integer givenPosition)
+//    boolean contains(T anEntry)
+//    int getNumberOfEntries()
+//    boolean isEmpty()
+//    boolean isFull()
 }
