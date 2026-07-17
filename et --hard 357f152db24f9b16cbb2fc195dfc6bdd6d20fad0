@@ -1,0 +1,113 @@
+[33mcommit 6ba4ed61157fe130d5030a56b10c5fa9faeef697[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mkimsoon_branch[m[33m)[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Fri Jul 17 21:37:43 2026 +0800
+
+    experiment new ui
+
+[33mcommit 357f152db24f9b16cbb2fc195dfc6bdd6d20fad0[m[33m ([m[1;31morigin/kimsoon_branch[m[33m)[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Fri Jul 17 21:32:35 2026 +0800
+
+    deploy with ,heap,list
+
+[33mcommit 75a8341a8928952aebee596a508d8d82ae348b42[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Fri Jul 17 21:24:29 2026 +0800
+
+    update list method documentation
+
+[33mcommit 9e30b9a43ad0c5d694ac1cf1792616bd485bfc42[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 4c0ee86 49e055a
+Author: YKS3939 <yapks-wm23@student.tarc.edu.my>
+Date:   Thu Jul 2 20:43:14 2026 +0800
+
+    Merge pull request #6 from YKS3939/file_io_module
+    
+    add instruction suggest
+
+[33mcommit 49e055a16641e304f5a17f0c0a5f2caba547963b[m[33m ([m[1;31morigin/file_io_module[m[33m, [m[1;32mfile_io_module[m[33m)[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Thu Jul 2 20:41:41 2026 +0800
+
+    add instruction suggest
+
+[33mcommit 4c0ee86f262bd3215737b9168c18a15e40072ad5[m
+Merge: 4298b27 7dd35ed
+Author: YKS3939 <yapks-wm23@student.tarc.edu.my>
+Date:   Wed Jul 1 22:20:22 2026 +0800
+
+    Merge pull request #5 from YKS3939/file_io_module
+    
+    Docker environment
+
+[33mcommit 7dd35ed0741f0758e0f7d506a08ebbcc28bb83a0[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Wed Jul 1 22:19:10 2026 +0800
+
+    Docker environment
+
+[33mcommit 4298b2729e7d425f8eaaf2515918e7a91b8b6cc3[m
+Merge: e588522 51a0892
+Author: YKS3939 <yapks-wm23@student.tarc.edu.my>
+Date:   Wed Jul 1 22:17:12 2026 +0800
+
+    Merge pull request #4 from YKS3939/file_io_module
+    
+    init file read DAO & adt Structure
+
+[33mcommit 51a08925d546dd93c9cf02169a24d0ff19b8b90e[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Wed Jul 1 22:16:14 2026 +0800
+
+    init file read DAO & adt Structure
+
+[33mcommit e5885226a2497939238827e738180040e6c6d5c4[m
+Merge: d764dc3 d98d40c
+Author: Wen Ting <gohwt-wm23@student.tarc.edu.my>
+Date:   Tue Jun 30 15:55:35 2026 +0800
+
+    Merge pull request #3 from YKS3939/wenting-branch
+    
+    edited boundary frontDesk and adt hashtable
+
+[33mcommit d98d40cff002d5dfb94852714ce1c5e25241f9ff[m[33m ([m[1;31morigin/wenting-branch[m[33m)[m
+Author: Wen Ting <gohwt-wm23@student.tarc.edu.my>
+Date:   Tue Jun 30 15:54:12 2026 +0800
+
+    edited boundary frontDesk and adt hashtable
+
+[33mcommit d764dc3552352646ac7230ea80f775ca0f5807c8[m
+Merge: fbe22c8 bca4901
+Author: YKS3939 <yapks-wm23@student.tarc.edu.my>
+Date:   Mon Jun 29 17:46:44 2026 +0800
+
+    Merge pull request #2 from YKS3939/fix_structure
+    
+    fix file wrong location bug
+
+[33mcommit bca49013a25ceff11ac4d77185b825ce95fd61c3[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Mon Jun 29 17:46:09 2026 +0800
+
+    fix file wrong location bug
+
+[33mcommit fbe22c853de1c1bd1b702570d1b7b61bd4eb9ffe[m
+Merge: d7acc8b 23772c7
+Author: Wen Ting <gohwt-wm23@student.tarc.edu.my>
+Date:   Mon Jun 29 11:31:13 2026 +0800
+
+    Merge pull request #1 from YKS3939/wenting-branch
+    
+    add example adt
+
+[33mcommit 23772c716a0cb7c2d7750e41e7001de381da28e1[m
+Author: Wen Ting <gohwt-wm23@student.tarc.edu.my>
+Date:   Mon Jun 29 11:29:40 2026 +0800
+
+    add example adt
+
+[33mcommit d7acc8bcd0b9057fe1deb0f915bb77ee8fa05ca0[m
+Author: Hastune Miku <yap.kimsoon23@gmail.com>
+Date:   Sun Jun 28 22:10:00 2026 +0800
+
+    First init

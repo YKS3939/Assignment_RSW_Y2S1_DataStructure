@@ -16,7 +16,7 @@ public class HousekeepingUI implements UI {
     public void run(){
         int choice;
         do{
-            ConsolePrint.menu("Housekeeping & Task Log","0. Back to Main Menu");
+            ConsolePrint.menu("Housekeeping & Task Log","1. Update Room Status","2. Rollback","3. View Housekeeping Log","4. Report","0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
         }while (choice != 0);
     }

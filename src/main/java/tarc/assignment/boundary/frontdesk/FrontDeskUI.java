@@ -21,6 +21,8 @@ public class FrontDeskUI implements UI {
             ConsolePrint.menu("Front-Desk Service",
          "1. Search Guest",
                     "2. Check room availability",
+                    "3. View Guest Billing Details",
+                    "4. Report",
                     "0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
             switch (choice){
