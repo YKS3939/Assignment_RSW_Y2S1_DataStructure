@@ -17,7 +17,7 @@ public class StandardBookingUI implements UI {
         int choice;
         do{
             ConsolePrint.clear();
-            ConsolePrint.menu("Walk-In Registrations & Standard Booking","1. Register Guest","2. View waiting queue","3. Assign the room to next guest","0. Back to Main Menu");
+            ConsolePrint.menu("Walk-In Registrations & Standard Booking","1. Register Guest","2. Assign Room to Next Guest","3. View Current Waiting List","4. Reports","0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
         }while (choice != 0);
     }

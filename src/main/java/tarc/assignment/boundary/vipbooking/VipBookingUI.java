@@ -16,7 +16,7 @@ public class VipBookingUI implements UI {
     public void run(){
         int choice;
         do{
-            ConsolePrint.menu("VIP & Loyalty Tier Allocation","1. Register VIP Guest","2. ");
+            ConsolePrint.menu("VIP & Loyalty Tier Allocation","1. Register VIP Guest","2. Allocate Room to Top VIP","3. View VIP Queue","4. Reports","0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
         }while (choice != 0);
     }
