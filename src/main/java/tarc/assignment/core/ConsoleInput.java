@@ -30,4 +30,11 @@ public class ConsoleInput {
         ConsolePrint.print(prompt);
         return scanner.nextLine();
     }
+
+    public char readChar(String prompt) {
+        ConsolePrint.print(prompt);
+        String input = scanner.nextLine();
+        return input.isEmpty() ? ' ' : input.charAt(0);
+    }
+
 }

@@ -7,9 +7,9 @@ public class ConsolePrint {
     private static final String FONT_GREEN  = "\u001B[32m";
     private static final String FONT_YELLOW = "\u001B[33m";
     private static final String FONT_BLUE   = "\u001B[94m";
-    private static final String FONT_LINE = "\u001B[96m";
-    public static  final String LINE=FONT_LINE+"==========================================="+ FONT_BLACK;
-
+    private static final String FONT_LINE_COLOR = "\u001B[96m";
+    public static final String LINE=FONT_LINE_COLOR+"==========================================="+ FONT_BLACK;
+    public static final String SINGLE_LINE=FONT_LINE_COLOR+"-------------------------------------------"+ FONT_BLACK;
 
     /**
      * @param {string...}
