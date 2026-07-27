@@ -1,4 +1,4 @@
-package tarc.assignment.boundary.frontdesk;
+package tarc.assignment.boundary.frontdesk.customer;
 
 import tarc.assignment.core.App;
 import tarc.assignment.core.UI;
@@ -17,7 +17,7 @@ public class registerUI implements UI {
         String icNum;
 
         ConsolePrint.clear();
-        ConsolePrint.println(ConsolePrint.LINE,"Register UI",ConsolePrint.LINE);
+        ConsolePrint.println(ConsolePrint.LINE,"Register New Customer",ConsolePrint.LINE);
         name=this.app.input().readString("Name: ");
         phoneNum=this.app.input().readString("Phone Number: ");
         icNum=this.app.input().readString("MyKad/Passport Number: ");

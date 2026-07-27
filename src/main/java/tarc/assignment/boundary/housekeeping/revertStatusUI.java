@@ -11,6 +11,6 @@ public class revertStatusUI implements UI {
     }
     @Override
     public void run(){
-        ConsolePrint.print("The room ? status revert [Cleaning->Dirty]");
+        ConsolePrint.println("The room ? status revert [Cleaning->Dirty]");
     }
 }

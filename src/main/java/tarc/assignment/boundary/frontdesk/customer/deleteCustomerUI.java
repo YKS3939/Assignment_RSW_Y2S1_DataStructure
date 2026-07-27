@@ -1,16 +1,14 @@
-package tarc.assignment.boundary.frontdesk;
+package tarc.assignment.boundary.frontdesk.customer;
 
 import tarc.assignment.core.App;
 import tarc.assignment.core.UI;
-import tarc.assignment.util.ConsolePrint;
 
-public class checkinUI implements UI {
+public class deleteCustomerUI implements UI {
     private final App app;
 
-    public checkinUI(App app){
+    public deleteCustomerUI(App app){
         this.app=app;
     }
-
     @Override
     public void run(){
 

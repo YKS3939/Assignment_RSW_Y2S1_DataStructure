@@ -1,0 +1,4 @@
+Basic=1
+Elite=2
+Diamond=3
+Platinum=4
