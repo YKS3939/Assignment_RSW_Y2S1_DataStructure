@@ -1,6 +1,6 @@
 package tarc.assignment.entity;
 
-public class Guest {
+public class Guest implements Comparable<Guest>{
     private String confirmationNum;
     private String name;
     private int memberTier;
@@ -11,6 +11,11 @@ public class Guest {
         this.name = name;
         this.memberTier = memberTier;
         this.phoneNum = phoneNum;
+    }
+
+    @Override
+    public int compareTo(Guest other) {
+        return this.confirmationNum.compareTo(other.getConfirmationNum());
     }
 
     public String getConfirmationNum() {

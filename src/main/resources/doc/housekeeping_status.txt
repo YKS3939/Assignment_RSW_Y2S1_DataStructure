@@ -1,0 +1,4 @@
+Dirty=1
+Cleaning=2
+Inspected=3
+Ready=4

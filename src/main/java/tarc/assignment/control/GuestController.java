@@ -5,12 +5,6 @@ import tarc.assignment.entity.Guest;
 import tarc.assignment.util.NumGenerate;
 import tarc.assignment.validate.GuestValidate;
 
-
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-
 public class GuestController {
     private final GuestDAO guestDAO;
 

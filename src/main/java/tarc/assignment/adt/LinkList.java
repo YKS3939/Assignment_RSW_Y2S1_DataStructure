@@ -3,6 +3,7 @@ package tarc.assignment.adt;
 public class LinkList<T> {
     private Node firstNode;
     private int size;
+
     private class Node {
         private T data; // entry in list
         private Node next; // link to next node

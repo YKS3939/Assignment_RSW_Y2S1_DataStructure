@@ -30,7 +30,6 @@ public class FrontDeskUI implements UI {
                     "1. Reservation",
                     "2. Check-In",
                     "3. Check-out & Billing",
-                    "4. ",
                     "0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
             switch (choice){

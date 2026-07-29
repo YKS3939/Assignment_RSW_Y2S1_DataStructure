@@ -1,11 +1,13 @@
 package tarc.assignment.util;
 
+import com.github.f4b6a3.ulid.UlidCreator;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NumGenerate {
 
     /**
-     * This part are use AI code generation - Yap Kim Soon
+     * This method are use AI code generation - Yap Kim Soon
      */
     public static String generateDigit(int digits) {
         if (digits <= 0 || digits > 10) {
@@ -17,5 +19,13 @@ public class NumGenerate {
 
         int randomNum = ThreadLocalRandom.current().nextInt(min, max);
         return String.valueOf(randomNum);
+    }
+
+    /**
+     * Generade ULID unique id -Ma Chun Yen
+     * @return String
+     */
+    public static String generadeULID(){
+        return UlidCreator.getUlid().toString();
     }
 }
