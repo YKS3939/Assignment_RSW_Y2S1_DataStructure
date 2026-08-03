@@ -1,29 +1,35 @@
 package tarc.assignment.entity;
 
 public class Guest implements Comparable<Guest>{
-    private String confirmationNum;
+    private String id;
     private String name;
     private int memberTier;
+    private int memberPoint;
     private String phoneNum;
 
-    public Guest(String confirmationNum, String name, int memberTier, String phoneNum) {
-        this.confirmationNum = confirmationNum;
+    public Guest(String id) {
+        this.id = id;
+    }
+
+    public Guest(String id, String name, int memberTier, int memberPoint, String phoneNum) {
+        this.id = id;
         this.name = name;
         this.memberTier = memberTier;
+        this.memberPoint= memberPoint;
         this.phoneNum = phoneNum;
     }
 
     @Override
     public int compareTo(Guest other) {
-        return this.confirmationNum.compareTo(other.getConfirmationNum());
+        return this.id.compareTo(other.getId());
     }
 
-    public String getConfirmationNum() {
-        return confirmationNum;
+    public String getId() {
+        return id;
     }
 
-    public void setConfirmationNum(String confirmationNum) {
-        this.confirmationNum = confirmationNum;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -40,6 +46,14 @@ public class Guest implements Comparable<Guest>{
 
     public void setMemberTier(int memberTier) {
         this.memberTier = memberTier;
+    }
+
+    public int getMemberPoint() {
+        return memberPoint;
+    }
+
+    public void setMemberPoint(int memberPoint) {
+        this.memberPoint = memberPoint;
     }
 
     public String getPhoneNum() {

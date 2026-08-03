@@ -3,24 +3,12 @@ package tarc.assignment.entity;
 import java.time.Instant;
 
 public class Reservation {
-    private String id;
     private String confirmationNum;
-    private Instant checkInTime;
-    private Instant checkOutTime;
+    private String customerId;
 
-    public Reservation(String id, String confirmationNum, Instant checkInTime, Instant checkOutTime) {
-        this.id = id;
+    public Reservation(String confirmationNum, String customerId) {
         this.confirmationNum = confirmationNum;
-        this.checkInTime = checkInTime;
-        this.checkOutTime = checkOutTime;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.customerId = customerId;
     }
 
     public String getConfirmationNum() {
@@ -31,19 +19,11 @@ public class Reservation {
         this.confirmationNum = confirmationNum;
     }
 
-    public Instant getCheckInTime() {
-        return checkInTime;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCheckInTime(Instant checkInTime) {
-        this.checkInTime = checkInTime;
-    }
-
-    public Instant getCheckOutTime() {
-        return checkOutTime;
-    }
-
-    public void setCheckOutTime(Instant checkOutTime) {
-        this.checkOutTime = checkOutTime;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }

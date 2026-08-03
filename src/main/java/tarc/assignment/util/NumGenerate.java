@@ -1,5 +1,6 @@
 package tarc.assignment.util;
 
+import com.github.f4b6a3.tsid.TsidCreator;
 import com.github.f4b6a3.ulid.UlidCreator;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -27,5 +28,13 @@ public class NumGenerate {
      */
     public static String generadeULID(){
         return UlidCreator.getUlid().toString();
+    }
+
+    /**
+     * Generade TSID id for customer id- Goh Wen Ting
+     * @return String
+     */
+    public static String generateTSID() {
+        return TsidCreator.getTsid().toString();
     }
 }

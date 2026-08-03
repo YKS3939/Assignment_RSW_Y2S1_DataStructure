@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class GuestValidate {
     private static final Pattern NAME_PATTERN = Pattern.compile("^[a-zA-Z\\u4e00-\\u9fa5\\s]+$");
     private static final Pattern PHONE_PATTERN = Pattern.compile("^\\+?[0-9]{7,15}$");
+//    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
 
     public static void validateName(String name) {
         if (name == null || name.trim().isEmpty()) {
@@ -20,4 +21,13 @@ public class GuestValidate {
             throw new IllegalArgumentException("Invalid phone number format.");
         }
     }
+
+//    public static void validateEmail(String email) {
+//        if (email == null || email.trim().isEmpty()) {
+//            throw new IllegalArgumentException("Email cannot be empty.");
+//        }
+//        if (!EMAIL_PATTERN.matcher(email.trim()).matches()) {
+//            throw new IllegalArgumentException("Invalid email format.");
+//        }
+//    }
 }

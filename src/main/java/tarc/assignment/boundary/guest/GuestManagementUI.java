@@ -4,15 +4,15 @@ import tarc.assignment.core.App;
 import tarc.assignment.core.UI;
 import tarc.assignment.util.ConsolePrint;
 
-public class GuestUI implements UI {
+public class GuestManagementUI implements UI {
     private final App app;
-    private final RegisterGuestUI registerGuestUI;
-    private final LoginGuestUI loginGuestUI;
+    private final String userID;
+    private final GuestProfileUI guestProfileUI;
 
-    public GuestUI(App app){
+    public GuestManagementUI(App app, String userID){
         this.app=app;
-        this.registerGuestUI=new RegisterGuestUI(this.app);
-        this.loginGuestUI=new LoginGuestUI(this.app);
+        this.userID=userID;
+        guestProfileUI=new GuestProfileUI(app,userID);
     }
 
     @Override
@@ -20,19 +20,16 @@ public class GuestUI implements UI {
         int choice;
         do{
             ConsolePrint.clear();
-            ConsolePrint.menu("Guest",
-                    "1. Login",
-                    "2. Register a new account",
-                    "0. Back to Main Menu");
+            ConsolePrint.menu("Guest Management","1. My profile","2. Edit My profile","9. Delete my account","0. LogOut");
             choice=app.input().readInt("Option: ");
             switch (choice){
-                case 1->loginGuestUI.run();
-                case 2 -> registerGuestUI.run();
+                case 1->guestProfileUI.run();
                 case 0 -> {return;}
                 default -> {
                     app.input().pressAnyKey("Invalid choice! Press [ENTER] key to continue....",app.input().ERROR);
                 }
             }
         }while (choice != 0);
+
     }
 }
