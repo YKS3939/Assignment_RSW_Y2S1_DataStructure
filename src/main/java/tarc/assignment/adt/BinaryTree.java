@@ -2,6 +2,9 @@ package tarc.assignment.adt;
 
 import java.util.Date;
 
+/**
+ *  Goh Wen Ting
+ */
 public class BinaryTree<T extends Comparable<T>>{
     private Node<T> root;
 

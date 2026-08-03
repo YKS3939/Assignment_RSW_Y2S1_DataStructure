@@ -1,6 +1,8 @@
 package tarc.assignment.adt;
 
-
+/**
+ *  Ma Chun Yen
+ */
 public class Stack<T>{
     private ArrayList<T> stack;
     private static final int DEFAULT_CAPACITY = 25;

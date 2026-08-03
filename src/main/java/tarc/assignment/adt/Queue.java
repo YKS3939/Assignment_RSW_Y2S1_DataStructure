@@ -1,6 +1,8 @@
 package tarc.assignment.adt;
 
-
+/**
+ *  Ng Zhun Onn
+ */
 public class Queue <T>{
     private Node<T> head;
     private Node<T> tail;

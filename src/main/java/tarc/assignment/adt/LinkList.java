@@ -1,5 +1,6 @@
 package tarc.assignment.adt;
 
+@Deprecated
 public class LinkList<T> {
     private Node firstNode;
     private int size;

@@ -1,5 +1,8 @@
 package tarc.assignment.adt;
 
+/**
+ *  Goh Wen Ting
+ */
 public class HashTable <K,V>{
     private static final int DEFAULT_CAPACITY = 10;
     private ArrayList<Node>[] room = new ArrayList[DEFAULT_CAPACITY];
@@ -28,6 +31,10 @@ public class HashTable <K,V>{
             };
         }
         return null;
+    }
+
+    public boolean exist(K key) {
+        return get(key) != null;
     }
 
     public void remove(K key){

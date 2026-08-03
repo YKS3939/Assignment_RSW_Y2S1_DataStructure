@@ -1,6 +1,8 @@
 package tarc.assignment.adt;
 
-@SuppressWarnings("unchecked")
+/**
+ * Everyone share
+ */
 public class ArrayList<T>{
     private T[] list;
     private int size;

@@ -3,6 +3,9 @@ package tarc.assignment.adt;
 //left: 2*i+1
 //right: 2*i+2
 
+/**
+ *  Yap Kim Soon
+ */
 public class MaxHeap<T extends Comparable<T>>{
     private T[] heap;
     private int size;
