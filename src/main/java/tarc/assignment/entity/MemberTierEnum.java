@@ -1,6 +1,6 @@
 package tarc.assignment.entity;
 
-public enum MemberTier {
+public enum MemberTierEnum {
     BASIC(1,"Basic"),
     ELITE(2,"Elite"),
     DIAMOND(3,"Diamond"),
@@ -9,7 +9,7 @@ public enum MemberTier {
     private final int code;
     private final String name;
 
-    MemberTier(int code, String name) {
+    MemberTierEnum(int code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -23,10 +23,10 @@ public enum MemberTier {
     }
 
     /**
-     * This method are use AI code generation - Goh Wen Ting
+     * This method are use AI code generation - Ma Chun Yen
      */
     public static String fromCode(int code) {
-        for (MemberTier tier : MemberTier.values()) {
+        for (MemberTierEnum tier : MemberTierEnum.values()) {
             if (tier.getCode() == code) {
                 return tier.name;
             }

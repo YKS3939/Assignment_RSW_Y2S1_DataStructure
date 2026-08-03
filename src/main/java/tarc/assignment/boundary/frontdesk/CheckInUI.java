@@ -2,6 +2,9 @@ package tarc.assignment.boundary.frontdesk;
 
 import tarc.assignment.core.App;
 import tarc.assignment.core.UI;
+import tarc.assignment.entity.Guest;
+import tarc.assignment.util.ConsolePrint;
+import tarc.assignment.util.NumGenerate;
 
 public class CheckInUI implements UI {
     private final App app;
@@ -11,6 +14,7 @@ public class CheckInUI implements UI {
 
     @Override
     public void run(){
-        String confirmationNum=this.app.input().readString("Enter the guest confirmation Number :");
+
+
     }
 }

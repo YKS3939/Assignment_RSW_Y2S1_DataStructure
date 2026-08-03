@@ -55,7 +55,11 @@ public class GuestController {
 
     public Guest find(String userID){
         try{
-            return database.guestADT().search(new Guest(userID));
+            Guest data=database.guestADT().search(new Guest(userID));
+            if (data==null){
+                throw new NullPointerException();
+            }
+            return data;
         }catch (NullPointerException e){
             throw new RuntimeException("Not Found the User");
         }

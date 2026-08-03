@@ -8,8 +8,9 @@ import java.nio.file.Paths;
 
 public class ReservationDAO {
     private static final Path path = Paths.get("src", "main", "java", "tarc", "assignment", "core", "data", "reservation.txt");
+
     public void create(Reservation reservation){
-//        String record=String.join(",",reservation.getId(),String.valueOf(reservation.getCheckInTime()),String.valueOf(reservation.getCheckOutTime()));
-//        RubyFile.append(path,record);
+        String record=String.join(",",reservation.getConfirmationNum(), reservation.getCustomerId(),String.valueOf(reservation.getMemberTier()),String.valueOf(reservation.getCreateAt()));
+        RubyFile.append(path,record);
     }
 }

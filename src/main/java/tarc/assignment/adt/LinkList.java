@@ -5,8 +5,8 @@ public class LinkList<T> {
     private int size;
 
     private class Node {
-        private T data; // entry in list
-        private Node next; // link to next node
+        private T data;
+        private Node next;
         private Node(T data) {
             this.data = data;
             next = null;
