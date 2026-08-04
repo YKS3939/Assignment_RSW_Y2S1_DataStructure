@@ -19,7 +19,8 @@ public class Database {
     public Database(){
         this.guestDAO=new GuestDAO();
         this.reservationDAO=new ReservationDAO();
-        initGuestADT();
+        loadGuestADT();
+        loadReservationADT();
     }
 
     public GuestDAO guestDAO(){
@@ -32,12 +33,25 @@ public class Database {
         return guestADT;
     }
 
-    private void initGuestADT(){
-        ArrayList<Guest> initialList = guestDAO.readGuest();
-        for (int i = 0; i < initialList.getSize(); i++) {
-            Guest guest = initialList.get(i);
-            if (guest != null) {
-                guestADT.insert(guest);
+    public HashTable<String,Reservation> reservationADT(){return reservationADT;}
+
+    private void loadGuestADT(){
+        guestADT.clear();
+        ArrayList<Guest> List = guestDAO.readAll();
+        for (int i = 0; i < List.getSize(); i++) {
+            Guest item = List.get(i);
+            if (item != null) {
+                guestADT.insert(item);
+            }
+        }
+    }
+    private void loadReservationADT(){
+        reservationADT.clear();
+        ArrayList<Reservation> List = reservationDAO.readAll();
+        for (int i = 0; i < List.getSize(); i++) {
+            Reservation item = List.get(i);
+            if (item != null) {
+                reservationADT.add(item.getConfirmationNum(),item);
             }
         }
     }

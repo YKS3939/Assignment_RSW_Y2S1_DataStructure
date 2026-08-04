@@ -15,15 +15,25 @@ public class ReservationController {
 
     public void create(GuestController guestController,String userID){
         try{
-            String confirmationNum= NumGenerate.generateDigit(8);
+            String confirmationNum;
             Guest guest=guestController.find(userID);
             Instant timeNow = Instant.now();
 
             if (guest==null){
                 throw new NullPointerException();
             }
+            while (true) {
+                confirmationNum = NumGenerate.generateDigit(8);
+                boolean exist = database.reservationADT().exist(confirmationNum);
+                if (!exist) {
+                    break;
+                }
+                throw new RuntimeException("Catch repeat");
+            }
             Reservation reservation=new Reservation(confirmationNum,userID,guest.getMemberTier(),timeNow);
             database.reservationDAO().create(reservation);
+            database.reservationADT().add(confirmationNum,reservation);
+
         }catch (NullPointerException e){
             throw new RuntimeException("UserId not found");
         }

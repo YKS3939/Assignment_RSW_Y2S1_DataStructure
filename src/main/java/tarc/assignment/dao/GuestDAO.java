@@ -18,8 +18,8 @@ public class GuestDAO {
         RubyFile.append(path,record);
     }
 
-    public ArrayList<Guest> readGuest() {
-        ArrayList<Guest> guestList = new ArrayList<>(25);
+    public ArrayList<Guest> readAll() {
+        ArrayList<Guest> list = new ArrayList<>(25);
         try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -29,13 +29,13 @@ public class GuestDAO {
                 String[] data = line.split(",");
                 if (data.length >= 5) {
                     Guest guest = new Guest(data[0], data[1], Integer.parseInt(data[2].trim()),Integer.parseInt(data[3].trim()),data[4]);
-                    guestList.add(guest);
+                    list.add(guest);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error " + e.getMessage());
+            throw new RuntimeException("Failed to execute file readAll", e);
         }
 
-        return guestList;
+        return list;
     }
 }
