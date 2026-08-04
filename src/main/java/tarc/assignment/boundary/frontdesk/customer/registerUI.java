@@ -4,6 +4,7 @@ import tarc.assignment.core.App;
 import tarc.assignment.core.UI;
 import tarc.assignment.util.ConsolePrint;
 
+@Deprecated
 public class registerUI implements UI {
     private final App app;
 

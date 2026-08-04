@@ -6,6 +6,7 @@ import tarc.assignment.entity.Guest;
 import tarc.assignment.util.ConsolePrint;
 import tarc.assignment.util.NumGenerate;
 
+@Deprecated
 public class CheckInUI implements UI {
     private final App app;
     public CheckInUI(App app){

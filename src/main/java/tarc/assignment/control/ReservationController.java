@@ -13,7 +13,7 @@ public class ReservationController {
         this.database=database;
     }
 
-    public void create(GuestController guestController,String userID){
+    public String create(GuestController guestController,String userID){
         try{
             String confirmationNum;
             Guest guest=guestController.find(userID);
@@ -28,12 +28,12 @@ public class ReservationController {
                 if (!exist) {
                     break;
                 }
-                throw new RuntimeException("Catch repeat");
+//                throw new RuntimeException("Catch repeat");
             }
             Reservation reservation=new Reservation(confirmationNum,userID,guest.getMemberTier(),timeNow);
             database.reservationDAO().create(reservation);
             database.reservationADT().add(confirmationNum,reservation);
-
+            return confirmationNum;
         }catch (NullPointerException e){
             throw new RuntimeException("UserId not found");
         }
