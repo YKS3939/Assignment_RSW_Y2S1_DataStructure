@@ -30,8 +30,8 @@ public class ReservationDAO {
 
                 String[] data = line.split(",");
                 if (data.length >= 4) {
-                    Reservation reservation = new Reservation(data[0], data[1], Integer.parseInt(data[2].trim()), Instant.parse(data[3].trim()));
-                    list.add(reservation);
+                    Reservation item = new Reservation(data[0], data[1], Integer.parseInt(data[2].trim()), Instant.parse(data[3].trim()));
+                    list.add(item);
                 }
             }
         } catch (IOException e) {

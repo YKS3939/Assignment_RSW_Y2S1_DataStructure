@@ -1,7 +1,7 @@
 package tarc.assignment.adt;
 
 /**
- * Everyone share
+ * Ma Chun Yen
  */
 public class ArrayList<T>{
     private T[] list;
@@ -87,7 +87,6 @@ public class ArrayList<T>{
         return size==0;
     }
 
-    //this method are use AI - Yap Kim Soon
     public boolean contains(T anEntry) {
         for (int i = 0; i < size; i++) {
             if (anEntry == null) {
@@ -99,6 +98,16 @@ public class ArrayList<T>{
         return false;
     }
 
+    public int getPosition(T data) {
+        for (int i = 0; i < size; i++) {
+            if (data == null) {
+                if (list[i] == null) return -1;
+            } else if (data.equals(list[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     private void extend(){
         int length = list.length * 2;

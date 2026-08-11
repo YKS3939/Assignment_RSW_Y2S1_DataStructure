@@ -2,6 +2,7 @@ package tarc.assignment.control;
 
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.Guest;
+import tarc.assignment.entity.MemberTierEnum;
 import tarc.assignment.entity.Reservation;
 import tarc.assignment.util.NumGenerate;
 
@@ -13,7 +14,7 @@ public class ReservationController {
         this.database=database;
     }
 
-    public String create(GuestController guestController,String userID){
+    public String addRegistration(GuestController guestController,String userID){
         try{
             String confirmationNum;
             Guest guest=guestController.find(userID);
@@ -33,10 +34,38 @@ public class ReservationController {
             Reservation reservation=new Reservation(confirmationNum,userID,guest.getMemberTier(),timeNow);
             database.reservationDAO().create(reservation);
             database.reservationADT().add(confirmationNum,reservation);
+            if (reservation.getMemberTier()> MemberTierEnum.BASIC.getCode()){
+                database.vipBookingADT().insert(reservation);
+            }else{
+                database.standardBookingADT().enqueue(reservation);
+            }
             return confirmationNum;
         }catch (NullPointerException e){
             throw new RuntimeException("UserId not found");
         }
+    }
 
+    public Reservation viewNextGuest(){
+        if (!database.vipBookingADT().isEmpty()){
+            return database.vipBookingADT().peekMax();
+        }else if (!database.standardBookingADT().isEmpty()){
+            return database.standardBookingADT().peek();
+        }else{
+            throw new RuntimeException("Queue List are Empty");
+        }
+    }
+
+    public void dropReservation(String confirmationNum){
+        if (!database.vipBookingADT().isEmpty()){
+            //TODO:get confirmationId first
+            database.vipBookingADT().extractMax();
+            //TODO:reservationDAO must drop together
+        }else if (!database.standardBookingADT().isEmpty()){
+            database.standardBookingADT().dequeue();
+            //TODO:reservationDAO must drop together
+        }
+        else{
+            throw new RuntimeException("Queue List are Empty");
+        }
     }
 }

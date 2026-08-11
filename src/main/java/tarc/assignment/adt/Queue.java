@@ -33,7 +33,7 @@ public class Queue <T>{
     }
 
     public T peek(){
-        return isEmpty()?null:head.data;
+        return isEmpty() ? null : head.data;
 //        if(isEmpty()) return null;
 //        return head.data;
     }

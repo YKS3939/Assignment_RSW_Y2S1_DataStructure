@@ -28,8 +28,8 @@ public class GuestDAO {
 
                 String[] data = line.split(",");
                 if (data.length >= 5) {
-                    Guest guest = new Guest(data[0], data[1], Integer.parseInt(data[2].trim()),Integer.parseInt(data[3].trim()),data[4]);
-                    list.add(guest);
+                    Guest item = new Guest(data[0], data[1], Integer.parseInt(data[2].trim()),Integer.parseInt(data[3].trim()),data[4]);
+                    list.add(item);
                 }
             }
         } catch (IOException e) {

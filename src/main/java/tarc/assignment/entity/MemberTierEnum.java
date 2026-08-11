@@ -23,7 +23,7 @@ public enum MemberTierEnum {
     }
 
     /**
-     * This method are use AI code generation - Ma Chun Yen
+     * This method are use AI code generation - Yap Kim Soon
      */
     public static String fromCode(int code) {
         for (MemberTierEnum tier : MemberTierEnum.values()) {

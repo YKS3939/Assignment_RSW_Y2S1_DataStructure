@@ -23,14 +23,17 @@ public class GuestController {
             GuestValidate.validateName(name);
             GuestValidate.validatePhone(phoneNum);
 
-            //TODO: use frontdesk module to verify the guest id are exist,if exist, regenerade again
+            while (true){
+                if (isIdExist(custId)){
+                    custId=NumGenerate.generateDigit(6);
+                }else{
+                    break;
+                }
+            }
 
             Guest guest=new Guest(custId,name,1,0,phoneNum);
             this.database.guestDAO().create(guest);
             this.database.guestADT().insert(guest);
-
-            //TODO: the data must store into frontdesk binary tree OR hashmap
-
             return custId;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());

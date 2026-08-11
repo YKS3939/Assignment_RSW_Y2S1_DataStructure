@@ -1,16 +1,17 @@
 package tarc.assignment;
 
+import tarc.assignment.adt.ArrayList;
+import tarc.assignment.core.Database;
+import tarc.assignment.entity.Room;
 
 public class MockTest {
     public static void main(String[] args) {
-        String str = "Hello";
-        Integer num = 123;
+        Database database = new Database();
 
-        // 任何东西都可以变成号码
-        int hash1 = str.hashCode();
-        int hash2 = num.hashCode();
+        ArrayList<Room> dirtyRooms = database.roomADT().get("Dirty").all();
 
-        System.out.println(hash1); // 输出一串数字
-        System.out.println(hash2); // 输出数字
+        for (int i = 0; i < dirtyRooms.getSize(); i++) {
+            System.out.println(dirtyRooms.get(i));
+        }
     }
 }
