@@ -4,13 +4,13 @@ import java.time.Instant;
 
 public class CheckIn {
     private String confirmationNum;
-    private int roomNum;
+    private String roomNum;
     private String customerId;
     private boolean meal;
     private Instant checkInTime;
     private Instant checkOutTime;
 
-    public CheckIn(String confirmationNum, int roomNum, String customerId, boolean meal, Instant checkInTime, Instant checkOutTime) {
+    public CheckIn(String confirmationNum, String roomNum, String customerId, boolean meal, Instant checkInTime, Instant checkOutTime) {
         this.confirmationNum = confirmationNum;
         this.roomNum = roomNum;
         this.customerId = customerId;
@@ -27,11 +27,11 @@ public class CheckIn {
         this.confirmationNum = confirmationNum;
     }
 
-    public int getRoomNum() {
+    public String getRoomNum() {
         return roomNum;
     }
 
-    public void setRoomNum(int roomNum) {
+    public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
     }
 

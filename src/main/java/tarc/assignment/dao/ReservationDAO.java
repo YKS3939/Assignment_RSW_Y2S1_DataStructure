@@ -5,9 +5,7 @@ import tarc.assignment.entity.Guest;
 import tarc.assignment.entity.Reservation;
 import tarc.assignment.util.RubyFile;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
@@ -39,5 +37,48 @@ public class ReservationDAO {
         }
 
         return list;
+    }
+
+    /**
+     * This method are use AI code generation
+     */
+    public boolean deleteByConfirmationNum(String confirmationNum) {
+        if (confirmationNum == null || confirmationNum.trim().isEmpty()) {
+            return false;
+        }
+
+        ArrayList<String> remainingLines = new ArrayList<>(25);
+        boolean deleted = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String trimmedLine = line.trim();
+                if (trimmedLine.isEmpty()) continue;
+
+                String[] data = trimmedLine.split(",");
+
+                if (!deleted && data.length > 0 && data[0].trim().equals(confirmationNum.trim())) {
+                    deleted = true;
+                    continue;
+                }
+
+                remainingLines.add(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file during delete", e);
+        }
+        if (deleted) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) { // false 表示覆盖模式
+                for (int i = 0; i < remainingLines.getSize(); i++) {
+                    bw.write(remainingLines.get(i));
+                    bw.newLine();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to write file during delete", e);
+            }
+        }
+
+        return deleted;
     }
 }

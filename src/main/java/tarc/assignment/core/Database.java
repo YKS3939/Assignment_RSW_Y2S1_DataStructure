@@ -1,15 +1,16 @@
 package tarc.assignment.core;
 
 import tarc.assignment.adt.*;
-import tarc.assignment.dao.GuestDAO;
-import tarc.assignment.dao.ReservationDAO;
-import tarc.assignment.dao.RoomDAO;
+import tarc.assignment.dao.*;
 import tarc.assignment.entity.*;
+import tarc.assignment.repository.CheckInRepository;
 
 public class Database {
     private final GuestDAO guestDAO;
     private final ReservationDAO reservationDAO;
     private final RoomDAO roomDAO;
+    private final CheckInDAO checkInDAO;
+    private final TaskDAO taskDAO;
 
     private final BinaryTree<Guest> guestADT=new BinaryTree<>();
     private final Queue<Reservation> standardBookingADT=new Queue<>();
@@ -18,15 +19,25 @@ public class Database {
     private final Stack<Task> taskADT=new Stack<>();
     private final HashTable<String,Set<Room>> roomADT=new HashTable<>();
 
-    //TODO: Remain Stack adt
+    private final CheckInRepository checkInRepository;
+
 
     public Database(){
         this.guestDAO=new GuestDAO();
         this.reservationDAO=new ReservationDAO();
         this.roomDAO=new RoomDAO();
+        this.checkInDAO=new CheckInDAO();
+        this.taskDAO=new TaskDAO();
+
+
+        this.checkInRepository=new CheckInRepository();
+
         loadGuestADT();
         loadReservationADT();
         loadRoomADT();
+        loadCheckInRepo();
+
+        //TODO: task haven't init
     }
 
     public GuestDAO guestDAO(){
@@ -36,6 +47,8 @@ public class Database {
     public ReservationDAO reservationDAO(){return reservationDAO;}
 
     public RoomDAO roomDAO(){return roomDAO;}
+
+    public CheckInDAO checkInDAO(){return checkInDAO;}
 
     public BinaryTree<Guest> guestADT(){
         return guestADT;
@@ -52,6 +65,8 @@ public class Database {
     }
 
     public HashTable<String,Set<Room>> roomADT(){return roomADT;}
+
+    public CheckInRepository checkInRepository(){return checkInRepository;}
 
     private void loadGuestADT(){
         guestADT.clear();
@@ -97,6 +112,14 @@ public class Database {
                     roomSet.add(item);
                 }
             }
+        }
+    }
+
+    private void loadCheckInRepo(){
+        //TODO: add clear
+        ArrayList<CheckIn> list = checkInDAO.readAll();
+        for (int i = 0; i < list.getSize(); i++) {
+            checkInRepository.add(list.get(i));
         }
     }
 }

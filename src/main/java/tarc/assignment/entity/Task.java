@@ -8,14 +8,12 @@ public class Task {
     private String roomNum;
     private int beforeStatus;
     private int afterStatus;
-    private String action;
 
-    public Task(String id, String roomNum, int beforeStatus, int afterStatus, String action) {
+    public Task(String id, String roomNum, int beforeStatus, int afterStatus) {
         this.id = id;
         this.roomNum = roomNum;
         this.beforeStatus = beforeStatus;
         this.afterStatus = afterStatus;
-        this.action = action;
     }
 
     public String getId() {
@@ -49,14 +47,5 @@ public class Task {
     public void setAfterStatus(int afterStatus) {
         this.afterStatus = afterStatus;
     }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
 
 }

@@ -57,12 +57,11 @@ public class ReservationController {
 
     public void dropReservation(String confirmationNum){
         if (!database.vipBookingADT().isEmpty()){
-            //TODO:get confirmationId first
             database.vipBookingADT().extractMax();
-            //TODO:reservationDAO must drop together
+            database.reservationDAO().deleteByConfirmationNum(confirmationNum);
         }else if (!database.standardBookingADT().isEmpty()){
             database.standardBookingADT().dequeue();
-            //TODO:reservationDAO must drop together
+            database.reservationDAO().deleteByConfirmationNum(confirmationNum);
         }
         else{
             throw new RuntimeException("Queue List are Empty");

@@ -1,6 +1,6 @@
 package tarc.assignment.adt;
 
-public class Set<T> {
+public class Set<T extends Comparable<T>>{
     private final ArrayList<T> items;
     private static final int DEFAULT_CAPACITY = 25;
 
@@ -48,6 +48,18 @@ public class Set<T> {
             all.add(items.get(i));
         }
         return all;
+    }
+
+    public T get(T data) {
+        if (data == null) return null;
+
+        for (int i = 0; i < items.getSize(); i++) {
+            T current = items.get(i);
+            if (current.compareTo(data) == 0) {
+                return current;
+            }
+        }
+        return null;
     }
 
     public T get(int index) {

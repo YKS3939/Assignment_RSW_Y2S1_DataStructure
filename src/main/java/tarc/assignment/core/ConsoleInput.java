@@ -48,4 +48,19 @@ public class ConsoleInput {
         return input.isEmpty() ? ' ' : input.charAt(0);
     }
 
+    public boolean readYesNo(String prompt) {
+        while (true) {
+            ConsolePrint.print(prompt + " (y/n) :");
+            String input = scanner.nextLine().trim().toLowerCase();
+            if ("y".equals(input) || "yes".equals(input)) {
+                return true;
+            }
+            if ("n".equals(input) || "no".equals(input)) {
+                return false;
+            }
+
+            ConsolePrint.error("Only Accept 'y' or 'n'");
+        }
+    }
+
 }

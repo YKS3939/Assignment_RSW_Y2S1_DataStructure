@@ -1,9 +1,9 @@
-101,Standard,100.0,true,4
+101,Standard,100.0,true,3
 102,Deluxe,150.0,true,3
 103,Standard,100.0,false,1
 201,Standard,100.0,true,4
 202,Standard,100.0,true,2
-203,Deluxe,150.0,true,4
+203,Deluxe,150.0,false,4
 301,Deluxe,150.0,false,1
 302,Deluxe,150.0,true,3
-303,Deluxe,150.0,true,4
+303,Deluxe,150.0,false,4

@@ -22,7 +22,10 @@ public class CheckInUI implements UI {
             ConsolePrint.menu("Check-In","Confirmation Id :"+reservation.getConfirmationNum(),"Guest Id :"+reservation.getCustomerId());
             choice=app.input().readChar("Continue to check in process? (y=continue;n=cancelled;d=drop reservation)\nSelection :");
             switch (Character.toLowerCase(choice)){
-//                case 'y'->;
+                case 'y'->{
+                    CheckInProcessUI checkInProcessUI=new CheckInProcessUI(app, reservation.getConfirmationNum(), reservation.getCustomerId());
+                    checkInProcessUI.run();
+                }
                 case 'n'->throw new RuntimeException("Process Cancelled");
                 case 'd'-> {
                     app.reservationController().dropReservation(reservation.getConfirmationNum());
