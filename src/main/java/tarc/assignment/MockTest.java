@@ -2,20 +2,24 @@ package tarc.assignment;
 
 import tarc.assignment.adt.ArrayList;
 import tarc.assignment.control.RoomController;
+import tarc.assignment.core.App;
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.Room;
 import tarc.assignment.entity.RoomStatusEnum;
+import tarc.assignment.entity.Task;
 
 //Here are Trash Can (No la unit testing)
 public class MockTest {
     public static void main(String[] args) {
         Database database = new Database();
+        App app = new App(database);
         ArrayList<Room> cleanRoom= database.roomADT().get("Cleaning").all();
         ArrayList<Room> dirtyRooms = database.roomADT().get("Dirty").all();
         ArrayList<Room> inspectRooms = database.roomADT().get("Inspected").all();
         ArrayList<Room> readyRooms = database.roomADT().get("Ready").all();
 
+//        app.taskController().pushTask("101",3,4);
 //        database.roomDAO().changeStatus("303",4);
 //        database.roomDAO().changeService("303",true);
 //        CheckIn data=database.checkInRepository().findByConfirmNum("33208955");

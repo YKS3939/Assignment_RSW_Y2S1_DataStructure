@@ -19,8 +19,8 @@ public class TaskController {
         String ulid= NumGenerate.generadeULID();
         Task newTask=new Task(ulid,roomNum,beforeStatus,afterStatus, RubyTime.timeNow());
         roomController.changeRoomStatus(roomNum,afterStatus);
-//        database
-        //TODO:push it
+        database.taskDAO().create(newTask);
+        database.taskADT().push(newTask);
     }
 
 

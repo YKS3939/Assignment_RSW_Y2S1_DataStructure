@@ -10,7 +10,6 @@ public class App {
     private final ReservationController reservationController;
     private final RoomController roomController;
     private final CheckInController checkInController;
-    private final HousekeepingController housekeepingController;
     private final TaskController taskController;
     private final Database database;
 
@@ -22,7 +21,6 @@ public class App {
         guestController=new GuestController(database);
         reservationController=new ReservationController(database);
         roomController=new RoomController(database);
-        housekeepingController=new HousekeepingController(database,roomController);
         checkInController=new CheckInController(database,roomController);
         taskController=new TaskController(database,roomController);
     }
@@ -43,8 +41,6 @@ public class App {
     public RoomController roomController(){return roomController;}
 
     public CheckInController checkInController(){return checkInController;}
-
-    public HousekeepingController housekeepingController(){return housekeepingController;}
 
     public TaskController taskController(){return taskController;}
 
