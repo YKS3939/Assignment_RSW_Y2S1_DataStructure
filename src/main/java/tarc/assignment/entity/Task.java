@@ -1,5 +1,7 @@
 package tarc.assignment.entity;
 
+import java.time.Instant;
+
 /**
  * For HouseKeeping task - Ma Chun Yen
  */
@@ -8,12 +10,14 @@ public class Task {
     private String roomNum;
     private int beforeStatus;
     private int afterStatus;
+    private Instant createAt;
 
-    public Task(String id, String roomNum, int beforeStatus, int afterStatus) {
+    public Task(String id, String roomNum, int beforeStatus, int afterStatus,Instant createAt) {
         this.id = id;
         this.roomNum = roomNum;
         this.beforeStatus = beforeStatus;
         this.afterStatus = afterStatus;
+        this.createAt=createAt;
     }
 
     public String getId() {
@@ -48,4 +52,11 @@ public class Task {
         this.afterStatus = afterStatus;
     }
 
+    public Instant getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Instant createAt) {
+        this.createAt = createAt;
+    }
 }

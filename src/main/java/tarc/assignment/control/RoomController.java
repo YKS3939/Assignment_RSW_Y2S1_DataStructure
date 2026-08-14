@@ -30,7 +30,7 @@ public class RoomController {
             }
         }
 
-        throw new RuntimeException("What the fuck how to trigger this error");
+        throw new RuntimeException("The room not found");
     }
 
     //don't touch !!!!!!!

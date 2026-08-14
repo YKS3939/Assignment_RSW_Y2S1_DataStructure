@@ -6,11 +6,11 @@ import tarc.assignment.entity.*;
 import tarc.assignment.repository.CheckInRepository;
 
 public class Database {
-    private final GuestDAO guestDAO;
-    private final ReservationDAO reservationDAO;
-    private final RoomDAO roomDAO;
-    private final CheckInDAO checkInDAO;
-    private final TaskDAO taskDAO;
+    private final GuestDAO guestDAO=new GuestDAO();
+    private final ReservationDAO reservationDAO=new ReservationDAO();
+    private final RoomDAO roomDAO=new RoomDAO();
+    private final CheckInDAO checkInDAO=new CheckInDAO();
+    private final TaskDAO taskDAO=new TaskDAO();
 
     private final BinaryTree<Guest> guestADT=new BinaryTree<>();
     private final Queue<Reservation> standardBookingADT=new Queue<>();
@@ -19,25 +19,16 @@ public class Database {
     private final Stack<Task> taskADT=new Stack<>();
     private final HashTable<String,Set<Room>> roomADT=new HashTable<>();
 
-    private final CheckInRepository checkInRepository;
+    private final CheckInRepository checkInRepository=new CheckInRepository();
 
 
     public Database(){
-        this.guestDAO=new GuestDAO();
-        this.reservationDAO=new ReservationDAO();
-        this.roomDAO=new RoomDAO();
-        this.checkInDAO=new CheckInDAO();
-        this.taskDAO=new TaskDAO();
-
-
-        this.checkInRepository=new CheckInRepository();
-
         loadGuestADT();
         loadReservationADT();
         loadRoomADT();
         loadCheckInRepo();
 
-        //TODO: task haven't init
+        //TODO: taskDAO and ADT haven't init
     }
 
     public GuestDAO guestDAO(){
@@ -49,6 +40,8 @@ public class Database {
     public RoomDAO roomDAO(){return roomDAO;}
 
     public CheckInDAO checkInDAO(){return checkInDAO;}
+
+    public TaskDAO taskDAO(){return taskDAO;}
 
     public BinaryTree<Guest> guestADT(){
         return guestADT;
@@ -65,6 +58,8 @@ public class Database {
     }
 
     public HashTable<String,Set<Room>> roomADT(){return roomADT;}
+
+    public Stack<Task> taskADT(){return taskADT;}
 
     public CheckInRepository checkInRepository(){return checkInRepository;}
 

@@ -11,6 +11,7 @@ public class App {
     private final RoomController roomController;
     private final CheckInController checkInController;
     private final HousekeepingController housekeepingController;
+    private final TaskController taskController;
     private final Database database;
 
     public App(Database database){
@@ -23,6 +24,7 @@ public class App {
         roomController=new RoomController(database);
         housekeepingController=new HousekeepingController(database,roomController);
         checkInController=new CheckInController(database,roomController);
+        taskController=new TaskController(database,roomController);
     }
 
     public ConsoleInput input(){
@@ -43,6 +45,8 @@ public class App {
     public CheckInController checkInController(){return checkInController;}
 
     public HousekeepingController housekeepingController(){return housekeepingController;}
+
+    public TaskController taskController(){return taskController;}
 
     public Database database(){return database;}
 

@@ -17,10 +17,10 @@ public class HousekeepingProcessUI implements UI {
         try{
             String roomNum=app.input().readString("Room Number :");
             String roomNowStatus=app.roomController().findSet(new Room(roomNum));
-            int roomNextStatus= app.roomController().nextSet(roomNowStatus);
-            boolean choice=app.input().readYesNo("The room "+roomNum+" will update ["+roomNowStatus+"] to ["+RoomStatusEnum.fromCode(roomNextStatus)+"], Continue ?");
+            String roomNextStatus= app.roomController().nextName(RoomStatusEnum.fromName(roomNowStatus));
+            boolean choice=app.input().readYesNo("The room "+roomNum+" will update ["+roomNowStatus+"] to ["+roomNextStatus+"], Continue ?");
             if (choice){
-                app.housekeepingController().updateTaskStatus(roomNum,roomNextStatus);
+//                app.housekeepingController().updateTaskStatus(roomNum,roomNextStatus);
             }else {
                 throw new RuntimeException("Process Cancelled");
             }
