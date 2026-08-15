@@ -30,6 +30,7 @@ public class CheckInProcessUI implements UI {
             boolean result=app.checkInController().checkIn(app.roomController(),confirmationNum,roomNum,customerId,meal,day);
             if (result){
                 app.reservationController().dropReservation(confirmationNum);
+                app.input().pressAnyKey("CheckIn success",app.input().ERROR);
             }
         } catch (RuntimeException e) {
 //            e.printStackTrace();

@@ -20,7 +20,7 @@ public class GuestManagementUI implements UI {
         int choice;
         do{
             ConsolePrint.clear();
-            ConsolePrint.menu("Guest Management","1. My profile","2. Edit My profile","9. Delete my account","0. LogOut");
+            ConsolePrint.menu("Guest Management","1. My profile","2. Edit My profile","0. LogOut");
             choice=app.input().readInt("Option: ");
             switch (choice){
                 case 1->guestProfileUI.run();

@@ -18,7 +18,7 @@ public class Database {
     private final Queue<Reservation> standardBookingADT=new Queue<>();
     private final MaxHeap<Reservation> vipBookingADT=new MaxHeap<>();
 //    private final HashTable<String,Reservation> reservationADT=new HashTable<>();
-    private final Stack<Task> taskADT=new Stack<>();
+    private final LinkedStack<Task> taskADT=new LinkedStack<>();
     private final HashTable<String,Set<Room>> roomADT=new HashTable<>();
     private final ArrayList<CheckOut> checkOutADT=new ArrayList<>(25);
 
@@ -65,7 +65,7 @@ public class Database {
 
     public HashTable<String,Set<Room>> roomADT(){return roomADT;}
 
-    public Stack<Task> taskADT(){return taskADT;}
+    public LinkedStack<Task> taskADT(){return taskADT;}
 
     public ArrayList<CheckOut> checkOutADT(){return checkOutADT;}
 

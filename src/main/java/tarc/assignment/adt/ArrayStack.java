@@ -3,11 +3,12 @@ package tarc.assignment.adt;
 /**
  *  Ma Chun Yen
  */
-public class Stack<T>{
+@Deprecated
+public class ArrayStack<T>{
     private ArrayList<T> stack;
     private static final int DEFAULT_CAPACITY = 25;
 
-    public Stack(){
+    public ArrayStack(){
         stack = new ArrayList<>(DEFAULT_CAPACITY);
     }
 
