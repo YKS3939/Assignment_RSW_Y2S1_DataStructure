@@ -107,4 +107,26 @@ public class RoomController {
         database.roomDAO().changeService(roomNum,onService);
     }
 
+    public Room find(String roomNum){
+        if (roomNum.trim().isEmpty()) {
+            return null;
+        }
+        return find(new Room(roomNum));
+    }
+
+    public Room find(Room room) {
+        if (room == null) return null;
+
+        for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
+            Set<Room> list = database.roomADT().get(statusEnum.getName());
+            if (list != null) {
+                Room target = list.get(room);
+                if (target != null) {
+                    return target;
+                }
+            }
+        }
+        return null;
+    }
+
 }

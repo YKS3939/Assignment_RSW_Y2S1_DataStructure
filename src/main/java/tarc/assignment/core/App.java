@@ -11,7 +11,10 @@ public class App {
     private final RoomController roomController;
     private final CheckInController checkInController;
     private final TaskController taskController;
+    private final CheckOutController checkOutController;
     private final Database database;
+
+    private final Boot boot=new Boot();
 
     public App(Database database){
         Scanner scanner=new Scanner(System.in);
@@ -21,8 +24,9 @@ public class App {
         guestController=new GuestController(database);
         reservationController=new ReservationController(database);
         roomController=new RoomController(database);
-        checkInController=new CheckInController(database,roomController);
-        taskController=new TaskController(database,roomController);
+        checkInController=new CheckInController(database);
+        taskController=new TaskController(database);
+        checkOutController=new CheckOutController(database);
     }
 
     public ConsoleInput input(){
@@ -43,6 +47,8 @@ public class App {
     public CheckInController checkInController(){return checkInController;}
 
     public TaskController taskController(){return taskController;}
+
+    public CheckOutController checkOutController(){return checkOutController;}
 
     public Database database(){return database;}
 

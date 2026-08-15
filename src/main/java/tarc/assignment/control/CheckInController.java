@@ -2,6 +2,7 @@ package tarc.assignment.control;
 
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.CheckIn;
+import tarc.assignment.entity.Reservation;
 import tarc.assignment.util.RubyTime;
 import tarc.assignment.validate.CheckInValidate;
 
@@ -9,14 +10,12 @@ import java.time.Instant;
 
 public class CheckInController {
     private final Database database;
-    private final RoomController roomController;
 
-    public CheckInController(Database database,RoomController roomController){
+    public CheckInController(Database database){
         this.database=database;
-        this.roomController=roomController;
     }
 
-    public boolean checkIn(String confirmationNum,String roomNum,String customerId,boolean meal,int day){
+    public boolean checkIn(RoomController roomController,String confirmationNum,String roomNum,String customerId,boolean meal,int day){
         try{
             CheckInValidate.validateConfirmationNum(confirmationNum);
             CheckInValidate.validateRoomNum(roomNum);
@@ -25,6 +24,9 @@ public class CheckInController {
             if (roomController.isExistSet(roomNum,"Ready")){
                 Instant checkInTime=RubyTime.timeNow();
                 Instant checkOutTime=RubyTime.timeAddDays(day);
+
+                Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
+                database.reservationRepository().remove(reservation);
 
                 CheckIn checkIn=new CheckIn(confirmationNum,roomNum,customerId,meal,checkInTime,checkOutTime);
                 database.checkInDAO().create(checkIn);

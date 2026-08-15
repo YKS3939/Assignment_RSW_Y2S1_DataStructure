@@ -28,8 +28,21 @@ public class CheckInRepository {
         return roomNumHash.get(roomNum);
     }
 
-    public CheckIn CustomerId(String customerId) {
+    public CheckIn findByCustomerId(String customerId) {
         return custIdHash.get(customerId);
+    }
+
+    public void clear(){
+        confirmHash.clear();
+        roomNumHash.clear();
+        custIdHash.clear();
+    }
+
+    public boolean existByConfirmNum(String confirmationNum) {
+        if (confirmationNum == null) {
+            return false;
+        }
+        return confirmHash.get(confirmationNum) != null;
     }
 
 }

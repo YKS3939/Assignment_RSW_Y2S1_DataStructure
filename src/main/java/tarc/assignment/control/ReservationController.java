@@ -1,6 +1,7 @@
 package tarc.assignment.control;
 
 import tarc.assignment.core.Database;
+import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.Guest;
 import tarc.assignment.entity.MemberTierEnum;
 import tarc.assignment.entity.Reservation;
@@ -23,17 +24,31 @@ public class ReservationController {
             if (guest==null){
                 throw new NullPointerException();
             }
+
+            Reservation isReserve=database.reservationRepository().findByCustomerId(userID);
+            if (isReserve != null) {
+                throw new RuntimeException("User is already at queue.");
+            }
+
+            CheckIn isCheckin=database.checkInRepository().findByCustomerId(userID);
+            if (isCheckin != null) {
+                throw new RuntimeException("User is already checked in.");
+            }
+
             while (true) {
                 confirmationNum = NumGenerate.generateDigit(8);
-                boolean exist = database.reservationADT().exist(confirmationNum);
-                if (!exist) {
+
+                boolean inReservation = database.reservationRepository().existByConfirmNum(confirmationNum);
+                boolean inCheckIn = database.checkInRepository().existByConfirmNum(confirmationNum);
+
+                if (!inReservation && !inCheckIn) {
                     break;
                 }
-//                throw new RuntimeException("Catch repeat");
             }
             Reservation reservation=new Reservation(confirmationNum,userID,guest.getMemberTier(),timeNow);
             database.reservationDAO().create(reservation);
-            database.reservationADT().add(confirmationNum,reservation);
+//            database.reservationADT().add(confirmationNum,reservation);
+            database.reservationRepository().add(reservation);
             if (reservation.getMemberTier()> MemberTierEnum.BASIC.getCode()){
                 database.vipBookingADT().insert(reservation);
             }else{
@@ -59,9 +74,13 @@ public class ReservationController {
         if (!database.vipBookingADT().isEmpty()){
             database.vipBookingADT().extractMax();
             database.reservationDAO().deleteByConfirmationNum(confirmationNum);
+            Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
+            database.reservationRepository().remove(reservation);//TODO:find the possible memory deadlock
         }else if (!database.standardBookingADT().isEmpty()){
             database.standardBookingADT().dequeue();
             database.reservationDAO().deleteByConfirmationNum(confirmationNum);
+            Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
+            database.reservationRepository().remove(reservation);
         }
         else{
             throw new RuntimeException("Queue List are Empty");

@@ -7,15 +7,12 @@ import tarc.assignment.util.RubyTime;
 
 public class TaskController {
     private final Database database;
-    private final RoomController roomController;
-
-    public TaskController(Database database,RoomController roomController){
+    public TaskController(Database database){
         this.database=database;
-        this.roomController=roomController;
     }
 //TODO: save into ADT and DAO
 
-    public void pushTask(String roomNum,int beforeStatus,int afterStatus){
+    public void pushTask(RoomController roomController,String roomNum,int beforeStatus,int afterStatus){
         String ulid= NumGenerate.generadeULID();
         Task newTask=new Task(ulid,roomNum,beforeStatus,afterStatus, RubyTime.timeNow());
         roomController.changeRoomStatus(roomNum,afterStatus);
@@ -23,6 +20,14 @@ public class TaskController {
         database.taskADT().push(newTask);
     }
 
+    public Task peekRevert(){
+        return database.taskADT().peek();
+    }
+    public void revertTask(RoomController roomController){
+        Task task=database.taskADT().pop();
+        roomController.changeRoomStatus(task.getRoomNum(),task.getBeforeStatus());
+        database.taskDAO().deleteById(task.getId());
+    }
 
 
 }

@@ -49,6 +49,24 @@ public class Reservation implements Comparable<Reservation>{
 
     @Override
     public int compareTo(Reservation other) {
-        return this.confirmationNum.compareTo(other.getConfirmationNum());
+        if (other == null) return 1;
+
+        int tierCompare = Integer.compare(this.memberTier, other.getMemberTier());
+        if (tierCompare != 0) {
+            return tierCompare;
+        }
+
+        if (this.createAt != null && other.getCreateAt() != null) {
+            int timeCompare = other.getCreateAt().compareTo(this.createAt);
+            if (timeCompare != 0) {
+                return timeCompare;
+            }
+        }
+
+        if (this.confirmationNum != null && other.getConfirmationNum() != null) {
+            return this.confirmationNum.compareTo(other.getConfirmationNum());
+        }
+
+        return 0;
     }
 }

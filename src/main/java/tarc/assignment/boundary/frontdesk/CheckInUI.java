@@ -19,7 +19,7 @@ public class CheckInUI implements UI {
             char choice;
             ConsolePrint.clear();
             Reservation reservation=app.reservationController().viewNextGuest();
-            ConsolePrint.menu("Check-In","Confirmation Id :"+reservation.getConfirmationNum(),"Guest Id :"+reservation.getCustomerId());
+            ConsolePrint.menu("Check-In","Confirmation Id :"+reservation.getConfirmationNum(),"Guest Id :"+reservation.getCustomerId(),"Guest Name :"+app.guestController().find(reservation.getCustomerId()).getName());
             choice=app.input().readChar("Continue to check in process? (y=continue;n=cancelled;d=drop reservation)\nSelection :");
             switch (Character.toLowerCase(choice)){
                 case 'y'->{
@@ -34,6 +34,7 @@ public class CheckInUI implements UI {
                 default -> throw new RuntimeException("Invalid choice! Press [ENTER] key to continue....");
             }
         }catch (RuntimeException e){
+
             app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
         }
     }

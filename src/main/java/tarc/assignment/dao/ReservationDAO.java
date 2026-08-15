@@ -40,7 +40,7 @@ public class ReservationDAO {
     }
 
     /**
-     * This method are use AI code generation
+     * This method are use AI code generation -Ng Zhun Onn
      */
     public boolean deleteByConfirmationNum(String confirmationNum) {
         if (confirmationNum == null || confirmationNum.trim().isEmpty()) {

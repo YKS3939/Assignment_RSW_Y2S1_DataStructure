@@ -20,7 +20,7 @@ public class HousekeepingProcessUI implements UI {
             String roomNextStatus= app.roomController().nextName(RoomStatusEnum.fromName(roomNowStatus));
             boolean choice=app.input().readYesNo("The room "+roomNum+" will update ["+roomNowStatus+"] to ["+roomNextStatus+"], Continue ?");
             if (choice){
-                app.taskController().pushTask(roomNum,RoomStatusEnum.fromName(roomNowStatus),RoomStatusEnum.fromName(roomNextStatus));
+                app.taskController().pushTask(app.roomController(),roomNum,RoomStatusEnum.fromName(roomNowStatus),RoomStatusEnum.fromName(roomNextStatus));
                 app.input().pressAnyKey("The room cleaning status has been changed",app.input().SUCCESS);
             }else {
                 throw new RuntimeException("Process Cancelled");

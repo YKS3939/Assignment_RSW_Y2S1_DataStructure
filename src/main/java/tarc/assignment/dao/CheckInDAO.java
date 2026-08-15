@@ -4,9 +4,7 @@ import tarc.assignment.entity.CheckIn;
 import tarc.assignment.util.RubyFile;
 import tarc.assignment.adt.ArrayList;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
@@ -48,5 +46,46 @@ public class CheckInDAO {
         }
 
         return list;
+    }
+
+    public boolean deleteByConfirmationNum(String confirmationNum) {
+        if (confirmationNum == null || confirmationNum.trim().isEmpty()) {
+            return false;
+        }
+
+        ArrayList<String> remainingLines = new ArrayList<>(25);
+        boolean deleted = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String trimmedLine = line.trim();
+                if (trimmedLine.isEmpty()) continue;
+
+                String[] data = trimmedLine.split(",");
+
+                if (!deleted && data.length > 0 && data[0].trim().equals(confirmationNum.trim())) {
+                    deleted = true;
+                    continue;
+                }
+
+                remainingLines.add(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file during delete", e);
+        }
+
+        if (deleted) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) {
+                for (int i = 0; i < remainingLines.getSize(); i++) {
+                    bw.write(remainingLines.get(i));
+                    bw.newLine();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to write file during delete", e);
+            }
+        }
+
+        return deleted;
     }
 }

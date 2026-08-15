@@ -4,10 +4,9 @@ import tarc.assignment.adt.ArrayList;
 import tarc.assignment.control.RoomController;
 import tarc.assignment.core.App;
 import tarc.assignment.core.Database;
-import tarc.assignment.entity.CheckIn;
-import tarc.assignment.entity.Room;
-import tarc.assignment.entity.RoomStatusEnum;
-import tarc.assignment.entity.Task;
+import tarc.assignment.entity.*;
+
+import java.time.Instant;
 
 //Here are Trash Can (No la unit testing)
 public class MockTest {
@@ -21,8 +20,14 @@ public class MockTest {
 
 //        app.taskController().pushTask("101",3,4);
 //        database.roomDAO().changeStatus("303",4);
+//        Room room=app.roomController().find(new Room("101"));
+//        System.out.println(room.getRoomPrice());
 //        database.roomDAO().changeService("303",true);
 //        CheckIn data=database.checkInRepository().findByConfirmNum("33208955");
+//        Reservation reservation=new Reservation(String.valueOf(30875605),String.valueOf(555555),2, Instant.now());
+//        app.reservationController().addRegistration(app.guestController(),String.valueOf(555555));
+//        Reservation data=app.database().reservationRepository().findByConfirmNum(String.valueOf(30875605));
+//        System.out.println(database.reservationRepository().findByConfirmNum("79891638").getCustomerId());
 //        System.out.println(data.getRoomNum());
 //        Room special=database.roomADT().get("Dirty").get(new Room(String.valueOf(301)));
 //        System.out.println("Result "+special);
