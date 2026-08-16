@@ -1,9 +1,11 @@
 package tarc.assignment.adt;
 
+import tarc.assignment.core.api.StackInterface;
+
 /**
  *  Ma Chun Yen
  */
-public class LinkedStack <T>{
+public class LinkedStack <T> implements StackInterface<T> {
     private Node top;
     private int size;
 
@@ -12,6 +14,7 @@ public class LinkedStack <T>{
         this.size=0;
     }
 
+    @Override
     public void push(T item){
         Node newNode=new Node(item);
         newNode.next=top;
@@ -19,6 +22,7 @@ public class LinkedStack <T>{
         size++;
     }
 
+    @Override
     public T pop(){
         if (isEmpty()) {
             return null;
@@ -29,6 +33,7 @@ public class LinkedStack <T>{
         return data;
     }
 
+    @Override
     public T peek(){
         if (isEmpty()) {
             return null;
@@ -36,11 +41,13 @@ public class LinkedStack <T>{
         return top.data;
     }
 
+    @Override
     public boolean isEmpty(){
         return size==0;
     }
 
 
+    @Override
     public void clear(){
         this.top=null;
         size=0;

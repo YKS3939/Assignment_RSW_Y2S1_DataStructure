@@ -1,7 +1,7 @@
 package tarc.assignment.control;
 
 import tarc.assignment.adt.ArrayList;
-import tarc.assignment.adt.Set;
+import tarc.assignment.adt.ArraySet;
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.Room;
 import tarc.assignment.entity.RoomStatusEnum;
@@ -24,7 +24,7 @@ public class RoomController {
 
         for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
             String enumName = statusEnum.getName();
-            Set<Room> list = database.roomADT().get(enumName);
+            ArraySet<Room> list = database.roomADT().get(enumName);
             if (list != null && list.get(room) != null) {
                 return enumName;
             }
@@ -38,7 +38,7 @@ public class RoomController {
             ArrayList<Room> items=new ArrayList<>(25);
             for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
                 String enumName=statusEnum.getName();
-                Set<Room> list=database.roomADT().get(enumName);
+                ArraySet<Room> list=database.roomADT().get(enumName);
                 if (list != null) {
                     for (int i = 0; i < list.getSize(); i++) {
                         items.add(list.get(i));
@@ -60,7 +60,7 @@ public class RoomController {
     }
 
     public boolean isExistSet(String roomNum, String setName) {
-        Set<Room> roomSet = database.roomADT().get(setName);
+        ArraySet<Room> roomSet = database.roomADT().get(setName);
 
         if (roomSet == null) {return false;}
 
@@ -118,7 +118,7 @@ public class RoomController {
         if (room == null) return null;
 
         for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
-            Set<Room> list = database.roomADT().get(statusEnum.getName());
+            ArraySet<Room> list = database.roomADT().get(statusEnum.getName());
             if (list != null) {
                 Room target = list.get(room);
                 if (target != null) {

@@ -1,9 +1,11 @@
 package tarc.assignment.adt;
 
+import tarc.assignment.core.api.HashInterface;
+
 /**
  *  Goh Wen Ting
  */
-public class HashTable <K,V>{
+public class HashTable <K,V> implements HashInterface<K,V> {
     private static final int DEFAULT_CAPACITY = 10;
     private ArrayList<Node>[] room = new ArrayList[DEFAULT_CAPACITY];
 
@@ -13,6 +15,7 @@ public class HashTable <K,V>{
         }
     }
 
+    @Override
     public void add(K key, V value){
         int index=hashKey(key);
         for (int i = 0; i < room[index].getSize(); i++) {
@@ -23,6 +26,7 @@ public class HashTable <K,V>{
         }
         room[index].add(new Node(key, value));
     }
+    @Override
     public V get(K key) {
         int index=hashKey(key);
         for (int i = 0; i < room[index].getSize(); i++) {
@@ -33,10 +37,12 @@ public class HashTable <K,V>{
         return null;
     }
 
+    @Override
     public boolean exist(K key) {
         return get(key) != null;
     }
 
+    @Override
     public void remove(K key){
         int index=hashKey(key);
         for (int i = 0; i < room[index].getSize(); i++) {
@@ -47,6 +53,7 @@ public class HashTable <K,V>{
         }
     }
 
+    @Override
     public void clear(){
         for (int i = 0; i < DEFAULT_CAPACITY; i++) {
             room[i].clear();

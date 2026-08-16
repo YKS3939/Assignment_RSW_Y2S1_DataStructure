@@ -62,7 +62,7 @@ public class ReservationController {
 
     public Reservation viewNextGuest(){
         if (!database.vipBookingADT().isEmpty()){
-            return database.vipBookingADT().peekMax();
+            return database.vipBookingADT().peek();
         }else if (!database.standardBookingADT().isEmpty()){
             return database.standardBookingADT().peek();
         }else{
@@ -72,7 +72,7 @@ public class ReservationController {
 
     public void dropReservation(String confirmationNum){
         if (!database.vipBookingADT().isEmpty()){
-            database.vipBookingADT().extractMax();
+            database.vipBookingADT().extract();
             database.reservationDAO().deleteByConfirmationNum(confirmationNum);
             Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
             database.reservationRepository().remove(reservation);//TODO:find the possible memory deadlock

@@ -3,10 +3,12 @@ package tarc.assignment.adt;
 //left: 2*i+1
 //right: 2*i+2
 
+import tarc.assignment.core.api.HeapInterface;
+
 /**
  *  Yap Kim Soon
  */
-public class MaxHeap<T extends Comparable<T>>{
+public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
     private T[] heap;
     private int size;
     private static final int DEFAULT_CAPACITY = 25;
@@ -17,25 +19,30 @@ public class MaxHeap<T extends Comparable<T>>{
         size=0;
     }
 
+    @Override
     public MaxHeap() {
         this(DEFAULT_CAPACITY);
     }
 
+    @Override
     public int getSize(){
         return size;
     }
 
+    @Override
     public boolean isEmpty(){
         return size==0;
     }
 
-    public T peekMax(){
+    @Override
+    public T peek(){
         if (isEmpty()) {
             return null;
         }
         return heap[0];
     }
 
+    @Override
     public void clear(){
         for (int i=0;i<size;i++){
             heap[i]=null;
@@ -43,11 +50,13 @@ public class MaxHeap<T extends Comparable<T>>{
         size=0;
     }
 
+    @Override
     public boolean isFull(){
         return size==heap.length;
     }
 
-    public T extractMax(){
+    @Override
+    public T extract(){
         if (isEmpty()) {
             return null;
         }
@@ -60,6 +69,7 @@ public class MaxHeap<T extends Comparable<T>>{
         return root;
     }
 
+    @Override
     public void insert(T item){
         if (isFull()) {
             extend();

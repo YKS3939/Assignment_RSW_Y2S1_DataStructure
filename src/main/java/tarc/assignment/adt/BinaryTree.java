@@ -1,31 +1,37 @@
 package tarc.assignment.adt;
 
+import tarc.assignment.core.api.TreeInterface;
+
 import java.util.Date;
 
 /**
  *  Goh Wen Ting
  */
-public class BinaryTree<T extends Comparable<T>>{
+public class BinaryTree<T extends Comparable<T>> implements TreeInterface<T> {
     private Node<T> root;
 
     public BinaryTree() {
         this.root = null;
     }
 
+    @Override
     public void insert(T newData){
         if (newData == null) return;
         root=insertRecursive(root,newData);
     }
 
+    @Override
     public T search(T key){
         if (key == null || isEmpty()) return null;
         return searchRecursive(root, key);
     }
 
+    @Override
     public void clear(){
         this.root = null;
     }
 
+    @Override
     public boolean isEmpty() {
         return this.root == null;
     }

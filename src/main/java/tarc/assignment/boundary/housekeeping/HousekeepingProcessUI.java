@@ -1,10 +1,9 @@
 package tarc.assignment.boundary.housekeeping;
 
 import tarc.assignment.core.App;
-import tarc.assignment.core.UI;
+import tarc.assignment.core.api.UI;
 import tarc.assignment.entity.Room;
 import tarc.assignment.entity.RoomStatusEnum;
-import tarc.assignment.util.ConsolePrint;
 
 public class HousekeepingProcessUI implements UI {
     private final App app;

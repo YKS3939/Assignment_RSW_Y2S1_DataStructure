@@ -2,7 +2,7 @@ package tarc.assignment.boundary.frontdesk;
 
 import tarc.assignment.boundary.room.AvailableRoomUI;
 import tarc.assignment.core.App;
-import tarc.assignment.core.UI;
+import tarc.assignment.core.api.UI;
 import tarc.assignment.util.Environment;
 
 

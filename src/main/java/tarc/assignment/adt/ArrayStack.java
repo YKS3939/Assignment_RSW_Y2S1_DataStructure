@@ -1,10 +1,12 @@
 package tarc.assignment.adt;
 
+import tarc.assignment.core.api.StackInterface;
+
 /**
  *  Ma Chun Yen
  */
 @Deprecated
-public class ArrayStack<T>{
+public class ArrayStack<T> implements StackInterface<T> {
     private ArrayList<T> stack;
     private static final int DEFAULT_CAPACITY = 25;
 
@@ -12,10 +14,12 @@ public class ArrayStack<T>{
         stack = new ArrayList<>(DEFAULT_CAPACITY);
     }
 
+    @Override
     public void push(T item){
         stack.add(item);
     }
 
+    @Override
     public T pop(){
         if (isEmpty()) {
             return null;
@@ -23,6 +27,7 @@ public class ArrayStack<T>{
         return stack.remove(stack.getSize()-1);
     }
 
+    @Override
     public T peek(){
         if (isEmpty()) {
             return null;
@@ -30,6 +35,7 @@ public class ArrayStack<T>{
         return stack.get(stack.getSize()-1);
     }
 
+    @Override
     public boolean isEmpty(){
         return stack.isEmpty();
     }
@@ -38,6 +44,7 @@ public class ArrayStack<T>{
         return false;//Unlimited knp nk true
     }
 
+    @Override
     public void clear(){
         stack.clear();
     }

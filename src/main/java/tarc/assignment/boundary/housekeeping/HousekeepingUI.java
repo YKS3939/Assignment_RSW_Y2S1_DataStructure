@@ -2,7 +2,7 @@ package tarc.assignment.boundary.housekeeping;
 
 import tarc.assignment.boundary.room.ViewAllRoomUI;
 import tarc.assignment.core.App;
-import tarc.assignment.core.UI;
+import tarc.assignment.core.api.UI;
 import tarc.assignment.util.ConsolePrint;
 
 public class HousekeepingUI implements UI {

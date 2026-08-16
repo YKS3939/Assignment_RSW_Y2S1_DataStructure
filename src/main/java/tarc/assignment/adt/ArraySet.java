@@ -1,14 +1,16 @@
 package tarc.assignment.adt;
 
-public class Set<T extends Comparable<T>>{
+import tarc.assignment.core.api.SetInterface;
+
+public class ArraySet<T extends Comparable<T>> implements SetInterface<T> {
     private final ArrayList<T> items;
     private static final int DEFAULT_CAPACITY = 25;
 
-    public Set() {
+    public ArraySet() {
         this.items = new ArrayList<>(DEFAULT_CAPACITY);
     }
 
-
+    @Override
     public boolean add(T data) {
         if (!contains(data)) {
             items.add(data);
@@ -17,6 +19,7 @@ public class Set<T extends Comparable<T>>{
         return false;
     }
 
+    @Override
     public boolean remove(T element) {
         int index = items.getPosition(element);
         if (index == -1) {
@@ -26,22 +29,27 @@ public class Set<T extends Comparable<T>>{
         return true;
     }
 
+    @Override
     public boolean contains(T element) {
         return items.getPosition(element) != -1;
     }
 
+    @Override
     public boolean isEmpty() {
         return items.isEmpty();
     }
 
+    @Override
     public int getSize() {
         return items.getSize();
     }
 
+    @Override
     public void clear() {
         items.clear();
     }
 
+    @Override
     public ArrayList<T> all() {
         ArrayList<T> all = new ArrayList<>(items.getSize());
         for (int i = 0; i < items.getSize(); i++) {
@@ -50,6 +58,7 @@ public class Set<T extends Comparable<T>>{
         return all;
     }
 
+    @Override
     public T get(T data) {
         if (data == null) return null;
 
@@ -62,6 +71,7 @@ public class Set<T extends Comparable<T>>{
         return null;
     }
 
+    @Override
     public T get(int index) {
         return items.get(index);
     }

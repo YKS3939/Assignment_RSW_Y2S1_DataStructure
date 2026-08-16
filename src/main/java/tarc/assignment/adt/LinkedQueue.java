@@ -1,14 +1,16 @@
 package tarc.assignment.adt;
 
+import tarc.assignment.core.api.QueueInterface;
+
 /**
  *  Ng Zhun Onn
  */
-public class Queue <T>{
+public class LinkedQueue<T> implements QueueInterface<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size;
 
-    public Queue(){
+    public LinkedQueue(){
         this.head=null;
         this.tail=null;
         this.size=0;
@@ -24,20 +26,24 @@ public class Queue <T>{
             this.next=null;}
     }
 
+    @Override
     public int getSize(){
         return size;
     }
 
+    @Override
     public boolean isEmpty(){
         return size==0;
     }
 
+    @Override
     public T peek(){
         return isEmpty() ? null : head.data;
 //        if(isEmpty()) return null;
 //        return head.data;
     }
 
+    @Override
     public void enqueue(T item){
         Node<T> newNode=new Node<>(item);
         if (isEmpty()){
@@ -49,6 +55,7 @@ public class Queue <T>{
         }
         size++;
     }
+    @Override
     public T dequeue(){
         if (isEmpty()){
             return null;
@@ -62,6 +69,7 @@ public class Queue <T>{
         return data;
     }
 
+    @Override
     public void clear(){
         head=null;
         tail=null;

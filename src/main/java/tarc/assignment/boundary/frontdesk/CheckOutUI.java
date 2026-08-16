@@ -1,7 +1,7 @@
 package tarc.assignment.boundary.frontdesk;
 
 import tarc.assignment.core.App;
-import tarc.assignment.core.UI;
+import tarc.assignment.core.api.UI;
 import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.Guest;
 import tarc.assignment.util.ConsolePrint;

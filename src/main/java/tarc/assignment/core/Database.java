@@ -15,11 +15,11 @@ public class Database {
     private final CheckOutDAO checkOutDAO=new CheckOutDAO();
 
     private final BinaryTree<Guest> guestADT=new BinaryTree<>();
-    private final Queue<Reservation> standardBookingADT=new Queue<>();
+    private final LinkedQueue<Reservation> standardBookingADT=new LinkedQueue<>();
     private final MaxHeap<Reservation> vipBookingADT=new MaxHeap<>();
 //    private final HashTable<String,Reservation> reservationADT=new HashTable<>();
     private final LinkedStack<Task> taskADT=new LinkedStack<>();
-    private final HashTable<String,Set<Room>> roomADT=new HashTable<>();
+    private final HashTable<String, ArraySet<Room>> roomADT=new HashTable<>();
     private final ArrayList<CheckOut> checkOutADT=new ArrayList<>(25);
 
     private final CheckInRepository checkInRepository=new CheckInRepository();
@@ -55,7 +55,7 @@ public class Database {
 
 //    public HashTable<String,Reservation> reservationADT(){return reservationADT;}
 
-    public Queue<Reservation> standardBookingADT(){
+    public LinkedQueue<Reservation> standardBookingADT(){
         return standardBookingADT;
     }
 
@@ -63,7 +63,7 @@ public class Database {
         return vipBookingADT;
     }
 
-    public HashTable<String,Set<Room>> roomADT(){return roomADT;}
+    public HashTable<String, ArraySet<Room>> roomADT(){return roomADT;}
 
     public LinkedStack<Task> taskADT(){return taskADT;}
 
@@ -105,7 +105,7 @@ public class Database {
     private void loadRoomADT() {
         roomADT.clear();
         for (RoomStatusEnum status : RoomStatusEnum.values()) {
-            roomADT.add(status.getName(), new Set<>());
+            roomADT.add(status.getName(), new ArraySet<>());
         }
 
         ArrayList<Room> list = roomDAO.readAll();
@@ -113,7 +113,7 @@ public class Database {
             Room item = list.get(i);
             if (item != null) {
                 String statusName = RoomStatusEnum.fromCode(item.getStatus());
-                Set<Room> roomSet = roomADT.get(statusName);
+                ArraySet<Room> roomSet = roomADT.get(statusName);
                 if (roomSet != null) {
                     roomSet.add(item);
                 }
