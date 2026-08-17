@@ -1,5 +1,6 @@
 package tarc.assignment.control;
 
+import tarc.assignment.adt.ArrayList;
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.CheckOut;
@@ -73,5 +74,9 @@ public class CheckOutController {
         database.checkInDAO().deleteByConfirmationNum(checkIn.getConfirmationNum());
         database.checkInRepository().remove(checkIn);
         return checkOut;
+    }
+
+    public ArrayList<CheckOut> getRecord(){
+        return database.checkOutDAO().readAll();
     }
 }

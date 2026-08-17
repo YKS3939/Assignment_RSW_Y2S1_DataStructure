@@ -8,6 +8,9 @@ import tarc.assignment.validate.CheckInValidate;
 
 import java.time.Instant;
 
+/**
+ * Yap Kim Soon
+ */
 public class CheckInController {
     private final Database database;
 

@@ -1,5 +1,6 @@
 package tarc.assignment.boundary;
 
+import tarc.assignment.boundary.admin.AdminUI;
 import tarc.assignment.boundary.frontdesk.FrontDeskUI;
 import tarc.assignment.boundary.guest.GuestUI;
 //import tarc.assignment.boundary.housekeeping.HousekeepingUI;
@@ -8,19 +9,27 @@ import tarc.assignment.core.App;
 import tarc.assignment.core.api.UI;
 import tarc.assignment.util.ConsolePrint;
 import tarc.assignment.util.Environment;
-
+import java.time.LocalDate;
 
 public class MainUI implements UI {
     private final App app;
     private final HousekeepingUI housekeepingUI;
     private final FrontDeskUI frontDeskUI;
     private final GuestUI guestUI;
+    private final AdminUI adminUI;
 
     public MainUI(App app){
         this.app=app;
         this.housekeepingUI=new HousekeepingUI(this.app);
         this.frontDeskUI=new FrontDeskUI(this.app);
         this.guestUI=new GuestUI(this.app);
+        this.adminUI=new AdminUI(this.app);
+        LocalDate expiredDate =  LocalDate.parse(Environment.get("app.expiredAt"));
+
+        if (LocalDate.now().isAfter(expiredDate)) {
+            ConsolePrint.warning("This assignment expired on " + expiredDate);
+             System.exit(0);
+        }
     }
 
     @Override
@@ -28,12 +37,13 @@ public class MainUI implements UI {
         int choice;
         do{
             ConsolePrint.clear();
-            ConsolePrint.menu(Environment.get("app.name"),"1. FrontDesk Staff","2. HouseKeeping Staff","3. Guest","0. Exit Program");
+            ConsolePrint.menu(Environment.get("app.name"),"1. FrontDesk Staff","2. HouseKeeping Staff","3. Guest","4. Admin","0. Exit Program");
             choice=app.input().readInt("Option: ");
             switch (choice){
                 case 1 -> frontDeskUI.run();
                 case 2 -> housekeepingUI.run();
                 case 3 -> guestUI.run();
+                case 4-> adminUI.run();
                 case 0 -> ConsolePrint.success("BYEBYE");
                 default -> {
                     app.input().pressAnyKey("Invalid choice! Press [ENTER] key to continue....",app.input().ERROR);

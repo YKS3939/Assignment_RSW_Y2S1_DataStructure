@@ -18,7 +18,7 @@ public class GuestValidate {
 
     public static void validatePhone(String phoneNum) {
         if (phoneNum == null || !PHONE_PATTERN.matcher(phoneNum).matches()) {
-            throw new IllegalArgumentException("Invalid phone number format.");
+            throw new IllegalArgumentException("PhoneNumber only accept more than 8 number digit");
         }
     }
 

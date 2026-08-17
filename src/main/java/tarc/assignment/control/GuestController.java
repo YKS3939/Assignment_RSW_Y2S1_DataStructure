@@ -1,14 +1,19 @@
 package tarc.assignment.control;
 
+import tarc.assignment.adt.ArrayList;
 import tarc.assignment.adt.BinaryTree;
 import tarc.assignment.core.Database;
 import tarc.assignment.dao.GuestDAO;
 import tarc.assignment.entity.Guest;
+import tarc.assignment.entity.Reservation;
 import tarc.assignment.util.NumGenerate;
 import tarc.assignment.validate.GuestValidate;
 
 import java.util.Objects;
 
+/**
+ * Goh Wen Ting
+ */
 public class GuestController {
     private final Database database;
 
@@ -66,5 +71,27 @@ public class GuestController {
         }catch (NullPointerException e){
             throw new RuntimeException("Not Found the User");
         }
+    }
+    public ArrayList<Guest> getAll(){
+        return database.guestDAO().readAll();
+    }
+
+    public void changeTier(String userID,int tier){
+        if (tier < 1 || tier > 4) {
+            throw new RuntimeException("Not found member tier level");
+        }
+
+        Guest guest = database.guestADT().search(new Guest(userID));
+        if (guest != null) {
+            guest.setMemberTier(tier);
+            database.guestDAO().updateMemberTier(userID, tier);
+
+            Reservation reservation=database.reservationRepository().findByCustomerId(userID);
+            if (reservation!=null){
+                database.reservationDAO().updateMemberTier(reservation.getConfirmationNum(),tier);
+                database.loadReservationADT();
+            }
+        }
+        database.loadGuestADT();
     }
 }

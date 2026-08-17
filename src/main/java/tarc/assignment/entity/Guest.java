@@ -22,7 +22,9 @@ public class Guest implements Comparable<Guest>{
     @Override
     public int compareTo(Guest other) {
         return this.id.compareTo(other.getId());
-    }//TODO:change to member tier
+    }
+    //TODO:change to member tier
+    // no la babi binary tree tk payah member tier
 
     public String getId() {
         return id;

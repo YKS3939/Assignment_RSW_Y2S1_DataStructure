@@ -17,7 +17,7 @@ public class CheckOutProcessUI implements UI {
     public void run(){
         ConsolePrint.clear();
         CheckOut checkOut=app.checkOutController().processCheckOut(app.roomController(),checkIn);
-        ConsolePrint.menu("Payment Receipt","Payment Id :"+checkOut.getId(),"Customer Id ："+checkOut.getCustomerId(),"Customer Name :"+app.guestController().find(checkOut.getCustomerId()).getName(),"Room Number :"+checkOut.getRoomNum(),"Room Type :"+app.roomController().find(checkOut.getRoomNum()).getRoomType(),"Stay Days :"+checkOut.getDays(),"Total Room Price :RM"+checkOut.getRoomFee(),"Total Meal Set Fee :RM"+checkOut.getMealFee(),"Penalty Charge :RM"+checkOut.getPenalty(),"Total :RM"+checkOut.getTotal());
+        ConsolePrint.menu("Payment Receipt","Payment Id :"+checkOut.id(),"Customer Id ："+checkOut.customerId(),"Customer Name :"+app.guestController().find(checkOut.customerId()).getName(),"Room Number :"+checkOut.roomNum(),"Room Type :"+app.roomController().find(checkOut.roomNum()).getRoomType(),"Stay Days :"+checkOut.days(),"Total Room Price :RM"+checkOut.roomFee(),"Total Meal Set Fee :RM"+checkOut.mealFee(),"Penalty Charge :RM"+checkOut.penalty(),"Total :RM"+checkOut.total());
         app.input().pressAnyKey("Payment Success!! Press [ENTER] key to continue.... ",app.input().SUCCESS);
     }
 }

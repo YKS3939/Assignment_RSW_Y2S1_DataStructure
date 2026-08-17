@@ -81,4 +81,44 @@ public class ReservationDAO {
 
         return deleted;
     }
+
+    public boolean updateMemberTier(String confirmationNum, int newMemberTier) {
+        if (confirmationNum == null || confirmationNum.trim().isEmpty()) {
+            return false;
+        }
+
+        ArrayList<String> lines = new ArrayList<>(25);
+        boolean updated = false;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path.toFile()))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String trimmedLine = line.trim();
+                if (trimmedLine.isEmpty()) continue;
+
+                String[] data = trimmedLine.split(",");
+                if (data.length >= 4 && data[0].trim().equals(confirmationNum.trim())) {
+                    data[2] = String.valueOf(newMemberTier);
+                    line = String.join(",", data[0].trim(), data[1].trim(), data[2].trim(), data[3].trim());
+                    updated = true;
+                }
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read reservation file during update", e);
+        }
+
+        if (updated) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) { // false 为覆盖模式
+                for (int i = 0; i < lines.getSize(); i++) {
+                    bw.write(lines.get(i));
+                    bw.newLine();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to write reservation file during update", e);
+            }
+        }
+
+        return updated;
+    }
 }

@@ -17,7 +17,7 @@ public class ConsoleInput {
             ConsolePrint.print(prompt);
             String input = scanner.nextLine();
             try {
-                return Integer.parseInt(input);
+                return Integer.parseInt(input.trim());
             } catch (NumberFormatException e) {
                 ConsolePrint.error("Only accept numbers.");
             }

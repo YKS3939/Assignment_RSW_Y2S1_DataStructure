@@ -48,6 +48,16 @@ public class RoomController {
             return items;
         }
 
+    public boolean isRoomAvailable() {
+        for (int i = 0; i < database.roomADT().get("Ready").getSize(); i++) {
+            Room item = database.roomADT().get("Ready").get(i);
+            if (item.isOnService()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Room> getAvailableRoom(){
         ArrayList<Room> items=new ArrayList<>(25);
         for (int i = 0; i < database.roomADT().get("Ready").getSize(); i++) {

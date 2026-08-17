@@ -9,6 +9,9 @@ import tarc.assignment.util.NumGenerate;
 
 import java.time.Instant;
 
+/**
+ * Ng Zhun Onn
+ */
 public class ReservationController {
     private final Database database;
     public ReservationController(Database database){
@@ -70,6 +73,9 @@ public class ReservationController {
         }
     }
 
+    /**
+     * Yap Kim Soon
+     */
     public void dropReservation(String confirmationNum){
         if (!database.vipBookingADT().isEmpty()){
             database.vipBookingADT().extract();

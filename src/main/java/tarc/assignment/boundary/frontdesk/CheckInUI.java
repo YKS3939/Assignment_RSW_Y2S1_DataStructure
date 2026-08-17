@@ -21,6 +21,8 @@ public class CheckInUI implements UI {
             choice=app.input().readChar("Continue to check in process? (y=continue;n=cancelled;d=drop reservation)\nSelection :");
             switch (Character.toLowerCase(choice)){
                 case 'y'->{
+                    boolean roomAvailable=app.roomController().isRoomAvailable();
+                    if (!roomAvailable) throw new RuntimeException("Doesn't have available clean room");
                     CheckInProcessUI checkInProcessUI=new CheckInProcessUI(app, reservation.getConfirmationNum(), reservation.getCustomerId());
                     checkInProcessUI.run();
                 }
@@ -32,7 +34,6 @@ public class CheckInUI implements UI {
                 default -> throw new RuntimeException("Invalid choice! Press [ENTER] key to continue....");
             }
         }catch (RuntimeException e){
-
             app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
         }
     }

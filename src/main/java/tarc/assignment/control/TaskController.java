@@ -1,5 +1,6 @@
 package tarc.assignment.control;
 
+import tarc.assignment.adt.ArrayList;
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.Task;
 import tarc.assignment.util.NumGenerate;
@@ -10,7 +11,6 @@ public class TaskController {
     public TaskController(Database database){
         this.database=database;
     }
-//TODO: save into ADT and DAO
 
     public void pushTask(RoomController roomController,String roomNum,int beforeStatus,int afterStatus){
         String ulid= NumGenerate.generadeULID();
@@ -29,5 +29,7 @@ public class TaskController {
         database.taskDAO().deleteById(task.getId());
     }
 
-
+    public ArrayList<Task> getAll(){
+        return database.taskDAO().readAll();
+    }
 }

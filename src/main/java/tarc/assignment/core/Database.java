@@ -32,7 +32,7 @@ public class Database {
         loadRoomADT();
         loadCheckInRepo();
         loadTaskADT();
-        //TODO:init checkOut DAO
+        loadCheckOutADT();
     }
 
     public GuestDAO guestDAO(){
@@ -73,7 +73,7 @@ public class Database {
 
     public ReservationRepository reservationRepository(){return reservationRepository;}
 
-    private void loadGuestADT(){
+    public void loadGuestADT(){
         guestADT.clear();
         ArrayList<Guest> List = guestDAO.readAll();
         for (int i = 0; i < List.getSize(); i++) {
@@ -83,7 +83,7 @@ public class Database {
             }
         }
     }
-    private void loadReservationADT(){
+    public void loadReservationADT(){
         reservationRepository.clear();
 //        reservationADT.clear();
         standardBookingADT.clear();
@@ -135,6 +135,14 @@ public class Database {
         ArrayList<Task> list = taskDAO.readAll();
         for (int i = 0; i < list.getSize(); i++) {
             taskADT.push(list.get(i));
+        }
+    }
+
+    private void loadCheckOutADT(){
+        checkOutADT.clear();
+        ArrayList<CheckOut> list=checkOutDAO.readAll();
+        for (int i = 0; i < list.getSize(); i++) {
+            checkOutADT.add(list.get(i));
         }
     }
 }

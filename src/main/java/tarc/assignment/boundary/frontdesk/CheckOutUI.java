@@ -18,9 +18,10 @@ public class CheckOutUI implements UI {
         try{
             String confirmationNum=this.app.input().readString("Enter the Confirmation Code :");
             CheckIn checkIn=app.database().checkInRepository().findByConfirmNum(confirmationNum);
-            Guest guest=app.database().guestADT().search(new Guest(checkIn.getCustomerId()));
+//            Guest guest=app.database().guestADT().search(new Guest(checkIn.getCustomerId()));
+            Guest guest=app.guestController().find(checkIn.getCustomerId());
             ConsolePrint.drawLine();
-            ConsolePrint.print("Room Number :"+checkIn.getRoomNum()+"\nGuest Name :"+guest.getName()+"\nCheck In Date :"+ RubyTime.convertFormat(checkIn.getCheckInTime(),"yyyy-MM-dd HH")+"\nCheck Out Deadline :"+RubyTime.convertFormat(checkIn.getCheckOutTime(),"yyyy-MM-dd HH")+"\n" );
+            ConsolePrint.print("Room Number :"+checkIn.getRoomNum()+"\nGuest Name :"+guest.getName()+"\nCheck In Date :"+ RubyTime.convertFormat(checkIn.getCheckInTime(),"yyyy-MM-dd hh:mm a")+"\nCheck Out Deadline :"+RubyTime.convertFormat(checkIn.getCheckOutTime(),"yyyy-MM-dd hh:mm a")+"\n" );
             ConsolePrint.drawLine();
             boolean choice=app.input().readYesNo("Do you want to continue process payment?");
             if (choice){

