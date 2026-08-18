@@ -9,7 +9,7 @@ import tarc.assignment.validate.CheckInValidate;
 import java.time.Instant;
 
 /**
- * Yap Kim Soon
+ * Yap Kim Soon & Ng Zhun Onn
  */
 public class CheckInController {
     private final Database database;

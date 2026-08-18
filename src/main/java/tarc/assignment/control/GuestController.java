@@ -91,7 +91,24 @@ public class GuestController {
                 database.reservationDAO().updateMemberTier(reservation.getConfirmationNum(),tier);
                 database.loadReservationADT();
             }
+        }else{
+            throw new RuntimeException("User are not Found");
         }
         database.loadGuestADT();
+    }
+    public void changePhone(String userID,String phoneNum){
+        try {
+            GuestValidate.validatePhone(phoneNum);
+            Guest guest = database.guestADT().search(new Guest(userID));
+            if (guest != null) {
+                guest.setPhoneNum(phoneNum);
+                database.guestDAO().updatePhoneNum(userID, phoneNum);
+            } else {
+                throw new RuntimeException("User are not Found");
+            }
+            database.loadGuestADT();
+        }catch(RuntimeException e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }

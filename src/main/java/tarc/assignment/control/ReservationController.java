@@ -10,7 +10,7 @@ import tarc.assignment.util.NumGenerate;
 import java.time.Instant;
 
 /**
- * Ng Zhun Onn
+ * Ng Zhun Onn & Yap Kim Soon
  */
 public class ReservationController {
     private final Database database;

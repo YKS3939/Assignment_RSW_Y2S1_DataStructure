@@ -69,7 +69,7 @@ public class ReservationDAO {
             throw new RuntimeException("Failed to read file during delete", e);
         }
         if (deleted) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) { // false 表示覆盖模式
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) {
                 for (int i = 0; i < remainingLines.getSize(); i++) {
                     bw.write(remainingLines.get(i));
                     bw.newLine();
@@ -82,6 +82,9 @@ public class ReservationDAO {
         return deleted;
     }
 
+    /**
+     * This method are use AI code generation -Yap Kim Soon
+     */
     public boolean updateMemberTier(String confirmationNum, int newMemberTier) {
         if (confirmationNum == null || confirmationNum.trim().isEmpty()) {
             return false;
@@ -109,7 +112,7 @@ public class ReservationDAO {
         }
 
         if (updated) {
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) { // false 为覆盖模式
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile(), false))) {
                 for (int i = 0; i < lines.getSize(); i++) {
                     bw.write(lines.get(i));
                     bw.newLine();
