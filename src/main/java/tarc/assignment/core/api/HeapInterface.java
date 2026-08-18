@@ -1,5 +1,9 @@
 package tarc.assignment.core.api;
 
+/**
+ * Yap Kim Soon
+ * @param <T>
+ */
 public interface HeapInterface<T> {
     int getSize();
     boolean isEmpty();

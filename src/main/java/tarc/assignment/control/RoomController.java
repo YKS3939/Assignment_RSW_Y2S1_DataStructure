@@ -8,15 +8,14 @@ import tarc.assignment.entity.RoomStatusEnum;
 
 import java.util.Objects;
 
+/**
+ * Ma Chun Yen
+ */
 public class RoomController {
     private final Database database;
 
     public RoomController(Database database){
         this.database=database;
-    }
-
-    public void updateRoomStatus(String roomNum,int status){
-        System.out.println(database.roomADT().get(RoomStatusEnum.fromCode(status)).get(new Room(roomNum)));
     }
 
     public String findSet(Room room) {
@@ -33,7 +32,6 @@ public class RoomController {
         throw new RuntimeException("The room not found");
     }
 
-    //don't touch !!!!!!!
     public ArrayList<Room> viewAllRoom(){
             ArrayList<Room> items=new ArrayList<>(25);
             for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {

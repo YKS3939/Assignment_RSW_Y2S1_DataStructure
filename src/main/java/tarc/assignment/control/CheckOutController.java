@@ -13,6 +13,9 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.Instant;
 
+/**
+ * Yap Kim Soon
+ */
 public class CheckOutController {
     private final Database database;
 
@@ -77,6 +80,6 @@ public class CheckOutController {
     }
 
     public ArrayList<CheckOut> getRecord(){
-        return database.checkOutDAO().readAll();
+        return database.checkOutADT();
     }
 }

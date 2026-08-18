@@ -1,7 +1,7 @@
 package tarc.assignment.adt;
 
 /**
- * Ma Chun Yen
+ * Ma Chun Yen & Goh Wen Ting & Yap Kim Soon & Ng Zhun Onn
  */
 public class ArrayList<T>{
     private T[] list;

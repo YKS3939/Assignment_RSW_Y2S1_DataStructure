@@ -4,6 +4,9 @@ import tarc.assignment.control.*;
 
 import java.util.Scanner;
 
+/**
+ * Yap Kim Soon, Ma Chun Yen,Goh Wen Ting ,Ng Zhun Onn
+ */
 public class App {
     private final ConsoleInput input;
     private final GuestController guestController;

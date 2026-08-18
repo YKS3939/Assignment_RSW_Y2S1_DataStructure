@@ -1,5 +1,9 @@
 package tarc.assignment.core.api;
 
+/**
+ * Ng Zhun Onn
+ * @param <T>
+ */
 public interface QueueInterface<T>{
     public int getSize();
     boolean isEmpty();

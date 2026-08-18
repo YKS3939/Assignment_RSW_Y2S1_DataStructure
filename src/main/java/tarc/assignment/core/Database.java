@@ -6,6 +6,9 @@ import tarc.assignment.entity.*;
 import tarc.assignment.repository.CheckInRepository;
 import tarc.assignment.repository.ReservationRepository;
 
+/**
+ * Yap Kim Soon, Ma Chun Yen,Goh Wen Ting ,Ng Zhun Onn
+ */
 public class Database {
     private final GuestDAO guestDAO=new GuestDAO();
     private final ReservationDAO reservationDAO=new ReservationDAO();

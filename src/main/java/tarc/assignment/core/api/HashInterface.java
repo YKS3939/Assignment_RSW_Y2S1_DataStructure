@@ -1,5 +1,10 @@
 package tarc.assignment.core.api;
 
+/**
+ * Goh Wen Ting
+ * @param <K>
+ * @param <V>
+ */
 public interface HashInterface <K,V>{
     void add(K key, V value);
     V get(K key);

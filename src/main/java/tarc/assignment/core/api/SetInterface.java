@@ -2,6 +2,10 @@ package tarc.assignment.core.api;
 
 import tarc.assignment.adt.ArrayList;
 
+/**
+ * Ma Chun Yen & Yap Kim Soon
+ * @param <T>
+ */
 public interface SetInterface<T> {
     boolean add(T data);
     boolean remove(T element);
