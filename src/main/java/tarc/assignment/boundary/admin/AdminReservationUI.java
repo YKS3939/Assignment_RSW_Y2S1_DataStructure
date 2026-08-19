@@ -36,6 +36,9 @@ public class AdminReservationUI implements UI {
                         "Member Tier :" + MemberTierEnum.fromCode(vip.getMemberTier()),
                         "Reservation At :" + RubyTime.convertFormat(vip.getCreateAt(), "yyyy-MM-dd hh:mm a")
                 );
+                ConsolePrint.println("Remain number of VIP Booking :"+app.database().vipBookingADT().getSize());
+                ConsolePrint.drawLine();
+
             } else {
                 ConsolePrint.drawLine();
                 ConsolePrint.error( "No VIP booking in queue.");
@@ -52,6 +55,8 @@ public class AdminReservationUI implements UI {
                         "Member Tier :" + MemberTierEnum.fromCode(standard.getMemberTier()),
                         "Reservation At :" + RubyTime.convertFormat(standard.getCreateAt(), "yyyy-MM-dd hh:mm a")
                 );
+                ConsolePrint.println("Remain number of Standard Booking :"+app.database().standardBookingADT().getSize());
+                ConsolePrint.drawLine();
             } else {
                 ConsolePrint.error( "No Standard booking in queue.");
                 ConsolePrint.drawLine();
