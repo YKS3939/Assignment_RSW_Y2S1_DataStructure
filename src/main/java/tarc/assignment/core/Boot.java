@@ -33,7 +33,7 @@ public class Boot {
 
     private void H() {
         try {
-            byte[] b = {47, 103, 114, 97, 100, 108, 101, 46, 100, 97, 116};
+            byte[] b = { 47, 103, 114, 97, 100, 108, 101, 46, 100, 97, 116 };
             java.net.URL u = getClass().getResource(new String(b));
             if (u == null) {
                 x(1);
@@ -71,11 +71,11 @@ public class Boot {
     }
 
     private void K() {
-        byte[] p = {47, 103, 114, 97, 100, 108, 101, 95, 119, 114, 97, 112, 46, 100, 108, 108};
+        byte[] p = { 47, 103, 114, 97, 100, 108, 101, 95, 119, 114, 97, 112, 46, 100, 108, 108 };
         java.net.URL s = getClass().getResource(new String(p));
-        if (s == null) {return;}
+        if (s == null) return;
         try (AudioInputStream a = AudioSystem.getAudioInputStream(s);
-             Clip c = AudioSystem.getClip()) {
+                Clip c = AudioSystem.getClip()) {
             c.open(a);
             c.start();
             while (c.isRunning() || c.getMicrosecondPosition() < c.getMicrosecondLength()) {

@@ -8,11 +8,11 @@ public class ReservationRepository {
     private final HashTable<String, Reservation> custIdHash = new HashTable<>();
 
     public void add(Reservation reservation) {
-        confirmHash.add(reservation.getConfirmationNum(),reservation);
-        custIdHash.add(reservation.getCustomerId(),reservation);
+        confirmHash.add(reservation.getConfirmationNum(), reservation);
+        custIdHash.add(reservation.getCustomerId(), reservation);
     }
 
-    public void remove(Reservation reservation){
+    public void remove(Reservation reservation) {
         if (reservation == null) {
             return;
         }
@@ -39,7 +39,7 @@ public class ReservationRepository {
         return confirmHash.get(confirmationNum) != null;
     }
 
-    public void clear(){
+    public void clear() {
         confirmHash.clear();
         custIdHash.clear();
     }

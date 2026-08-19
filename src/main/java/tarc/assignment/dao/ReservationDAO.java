@@ -12,9 +12,9 @@ import java.time.Instant;
 public class ReservationDAO {
     private static final Path path = Paths.get("src", "main", "java", "tarc", "assignment", "core", "data", "reservation.txt");
 
-    public void create(Reservation reservation){
-        String record=String.join(",",reservation.getConfirmationNum(), reservation.getCustomerId(),String.valueOf(reservation.getMemberTier()),String.valueOf(reservation.getCreateAt()));
-        RubyFile.append(path,record);
+    public void create(Reservation reservation) {
+        String record = String.join(",", reservation.getConfirmationNum(), reservation.getCustomerId(), String.valueOf(reservation.getMemberTier()), String.valueOf(reservation.getCreateAt()));
+        RubyFile.append(path, record);
     }
 
     public ArrayList<Reservation> readAll() {

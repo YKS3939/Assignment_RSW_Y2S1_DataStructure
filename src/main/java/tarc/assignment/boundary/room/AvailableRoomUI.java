@@ -8,15 +8,16 @@ import tarc.assignment.util.ConsolePrint;
 
 public class AvailableRoomUI implements UI {
     private final App app;
-    public AvailableRoomUI(App app){
-        this.app=app;
+
+    public AvailableRoomUI(App app) {
+        this.app = app;
     }
 
     @Override
-    public void run(){
+    public void run() {
         ArrayList<Room> items = app.roomController().getAvailableRoom();
         ConsolePrint.drawLine();
-        ConsolePrint.success("Room Available");
+        ConsolePrint.success("Rooms Available");
         ConsolePrint.drawLine();
         System.out.printf("%-10s %-15s %-20s%n",
                 "Room Num", "Room Type", "Price per day(RM)");

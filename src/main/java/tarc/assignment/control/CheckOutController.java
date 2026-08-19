@@ -18,16 +18,16 @@ import java.time.Instant;
 public class CheckOutController {
     private final Database database;
 
-    public CheckOutController(Database database){
-        this.database=database;
+    public CheckOutController(Database database) {
+        this.database = database;
     }
 
-    //Here don't touch
+    // Here don't touch
     public CheckOut processCheckOut(RoomController roomController, CheckIn checkIn) {
         Instant checkInTime = checkIn.getCheckInTime();
         Instant checkOutTime = checkIn.getCheckOutTime();
         Instant timeNow = RubyTime.timeNow();
-        String id= NumGenerate.generadeULID();
+        String id = NumGenerate.generadeULID();
 
         BigDecimal mealFee = BigDecimal.ZERO;
         BigDecimal penalty = BigDecimal.ZERO;
@@ -54,10 +54,10 @@ public class CheckOutController {
 
         BigDecimal totalRoomFee = roomPricePerNight.multiply(BigDecimal.valueOf(days));
 
-        //  Room fee+meal fee+ penalty
+        // Room fee+meal fee+ penalty
         BigDecimal total = totalRoomFee.add(mealFee).add(penalty);
 
-//        System.out.println("Total:"+total);
+        // System.out.println("Total:"+total);
         CheckOut checkOut = new CheckOut(
                 id,
                 checkIn.getRoomNum(),
@@ -67,10 +67,9 @@ public class CheckOutController {
                 totalRoomFee,
                 total,
                 days,
-                timeNow
-        );
-        roomController.changeRoomOnService(checkIn.getRoomNum(),true);
-        roomController.changeRoomStatus(checkIn.getRoomNum(),1);
+                timeNow);
+        roomController.changeRoomOnService(checkIn.getRoomNum(), true);
+        roomController.changeRoomStatus(checkIn.getRoomNum(), 1);
         database.checkOutDAO().create(checkOut);
         database.checkOutADT().add(checkOut);
         database.checkInDAO().deleteByConfirmationNum(checkIn.getConfirmationNum());
@@ -78,7 +77,7 @@ public class CheckOutController {
         return checkOut;
     }
 
-    public ArrayList<CheckOut> getRecord(){
+    public ArrayList<CheckOut> getRecord() {
         return database.checkOutADT();
     }
 }

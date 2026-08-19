@@ -14,28 +14,29 @@ import java.time.Instant;
  */
 public class ReservationController {
     private final Database database;
-    public ReservationController(Database database){
-        this.database=database;
+
+    public ReservationController(Database database) {
+        this.database = database;
     }
 
-    public String addRegistration(GuestController guestController,String userID){
-        try{
+    public String addRegistration(GuestController guestController, String userID) {
+        try {
             String confirmationNum;
-            Guest guest=guestController.find(userID);
+            Guest guest = guestController.find(userID);
             Instant timeNow = Instant.now();
 
-            if (guest==null){
+            if (guest == null) {
                 throw new NullPointerException();
             }
 
-            Reservation isReserve=database.reservationRepository().findByCustomerId(userID);
+            Reservation isReserve = database.reservationRepository().findByCustomerId(userID);
             if (isReserve != null) {
-                throw new RuntimeException("User is already at queue.");
+                throw new RuntimeException("User already in queue.");
             }
 
-            CheckIn isCheckin=database.checkInRepository().findByCustomerId(userID);
+            CheckIn isCheckin = database.checkInRepository().findByCustomerId(userID);
             if (isCheckin != null) {
-                throw new RuntimeException("User is already checked in.");
+                throw new RuntimeException("User already checked in.");
             }
 
             while (true) {
@@ -48,27 +49,27 @@ public class ReservationController {
                     break;
                 }
             }
-            Reservation reservation=new Reservation(confirmationNum,userID,guest.getMemberTier(),timeNow);
+            Reservation reservation = new Reservation(confirmationNum, userID, guest.getMemberTier(), timeNow);
             database.reservationDAO().create(reservation);
-//            database.reservationADT().add(confirmationNum,reservation);
+            // database.reservationADT().add(confirmationNum,reservation);
             database.reservationRepository().add(reservation);
-            if (reservation.getMemberTier()> MemberTierEnum.BASIC.getCode()){
+            if (reservation.getMemberTier() > MemberTierEnum.BASIC.getCode()) {
                 database.vipBookingADT().insert(reservation);
-            }else{
+            } else {
                 database.standardBookingADT().enqueue(reservation);
             }
             return confirmationNum;
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             throw new RuntimeException("UserId not found");
         }
     }
 
-    public Reservation viewNextGuest(){
-        if (!database.vipBookingADT().isEmpty()){
+    public Reservation viewNextGuest() {
+        if (!database.vipBookingADT().isEmpty()) {
             return database.vipBookingADT().peek();
-        }else if (!database.standardBookingADT().isEmpty()){
+        } else if (!database.standardBookingADT().isEmpty()) {
             return database.standardBookingADT().peek();
-        }else{
+        } else {
             throw new RuntimeException("Queue List are Empty");
         }
     }
@@ -76,19 +77,18 @@ public class ReservationController {
     /**
      * Yap Kim Soon
      */
-    public void dropReservation(String confirmationNum){
-        if (!database.vipBookingADT().isEmpty()){
+    public void dropReservation(String confirmationNum) {
+        if (!database.vipBookingADT().isEmpty()) {
             database.vipBookingADT().extract();
             database.reservationDAO().deleteByConfirmationNum(confirmationNum);
-            Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
-            database.reservationRepository().remove(reservation);//TODO:find the possible memory deadlock
-        }else if (!database.standardBookingADT().isEmpty()){
+            Reservation reservation = database.reservationRepository().findByConfirmNum(confirmationNum);
+            database.reservationRepository().remove(reservation);// TODO:find the possible memory deadlock
+        } else if (!database.standardBookingADT().isEmpty()) {
             database.standardBookingADT().dequeue();
             database.reservationDAO().deleteByConfirmationNum(confirmationNum);
-            Reservation reservation=database.reservationRepository().findByConfirmNum(confirmationNum);
+            Reservation reservation = database.reservationRepository().findByConfirmNum(confirmationNum);
             database.reservationRepository().remove(reservation);
-        }
-        else{
+        } else {
             throw new RuntimeException("Queue List are Empty");
         }
     }

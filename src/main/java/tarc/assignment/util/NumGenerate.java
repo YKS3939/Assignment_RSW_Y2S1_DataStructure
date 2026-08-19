@@ -23,15 +23,17 @@ public class NumGenerate {
     }
 
     /**
-     * Generade ULID unique id -Ma Chun Yen
+     * Generade ULID unique id - Ma Chun Yen
+     *
      * @return String
      */
-    public static String generadeULID(){
+    public static String generadeULID() {
         return UlidCreator.getUlid().toString();
     }
 
     /**
-     * Generade TSID id for customer id- Goh Wen Ting
+     * Generade TSID id for customer id - Goh Wen Ting
+     *
      * @return String
      */
     public static String generateTSID() {

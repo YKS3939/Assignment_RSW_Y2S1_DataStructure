@@ -5,7 +5,6 @@ import tarc.assignment.core.App;
 import tarc.assignment.core.api.UI;
 import tarc.assignment.util.Environment;
 
-
 //Must new for each mock or recreate
 public class CheckInProcessUI implements UI {
     private final App app;
@@ -13,28 +12,29 @@ public class CheckInProcessUI implements UI {
     private final String customerId;
     private final AvailableRoomUI availableRoomUI;
 
-    public CheckInProcessUI(App app,String confirmationNum,String customerId){
-        this.app=app;
-        this.confirmationNum=confirmationNum;
-        this.customerId=customerId;
-        this.availableRoomUI=new AvailableRoomUI(this.app);
+    public CheckInProcessUI(App app, String confirmationNum, String customerId) {
+        this.app = app;
+        this.confirmationNum = confirmationNum;
+        this.customerId = customerId;
+        this.availableRoomUI = new AvailableRoomUI(this.app);
     }
 
     @Override
-    public void run(){
+    public void run() {
         try {
-            int day=app.input().readInt("How much of day you want to stay here :");
-            boolean meal=app.input().readYesNo("Add breakfast meal set [RM "+ Environment.get("fee.meal") +"/day] ? ");
+            int day = app.input().readInt("How many days do you want to stay here:");
+            boolean meal = app.input().readYesNo("Add breakfast meal set [RM " + Environment.get("fee.meal") + "/day]?");
             availableRoomUI.run();
-            String roomNum=app.input().readString("Your room number selection :");
-            boolean result=app.checkInController().checkIn(app.roomController(),confirmationNum,roomNum,customerId,meal,day);
-            if (result){
+            String roomNum = app.input().readString("Your room number selection:");
+            boolean result = app.checkInController().checkIn(app.roomController(), confirmationNum, roomNum, customerId,
+                    meal, day);
+            if (result) {
                 app.reservationController().dropReservation(confirmationNum);
-                app.input().pressAnyKey("CheckIn success",app.input().SUCCESS);
+                app.input().pressAnyKey("CheckIn success", app.input().SUCCESS);
             }
         } catch (RuntimeException e) {
-//            e.printStackTrace();
-            app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
+            // e.printStackTrace();
+            app.input().pressAnyKey(e.getMessage(), app.input().ERROR);
         }
 
     }

@@ -9,8 +9,9 @@ import tarc.assignment.util.ConsolePrint;
 
 public class ViewAllRoomUI implements UI {
     private final App app;
-    public ViewAllRoomUI(App app){
-        this.app=app;
+
+    public ViewAllRoomUI(App app) {
+        this.app = app;
     }
 
     @Override
@@ -18,7 +19,7 @@ public class ViewAllRoomUI implements UI {
         ConsolePrint.clear();
         ArrayList<Room> items = app.roomController().viewAllRoom();
         ConsolePrint.drawLine();
-        ConsolePrint.success("All Room");
+        ConsolePrint.success("All Rooms");
         ConsolePrint.drawLine();
         System.out.printf("%-10s %-15s %-20s %-12s %-8s%n",
                 "Room Num", "Room Type", "Price per day(RM)", "On Service", "Status");
@@ -35,6 +36,6 @@ public class ViewAllRoomUI implements UI {
 
         }
         System.out.println("-------------------------------------------------------------------");
-        app.input().pressAnyKey("Press [ENTER] key to continue....",app.input().SUCCESS);
+        app.input().pressAnyKey("Press [ENTER] key to continue....", app.input().SUCCESS);
     }
 }

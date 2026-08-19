@@ -8,31 +8,33 @@ public class GuestManagementUI implements UI {
     private final App app;
     private final String userID;
     private final GuestProfileUI guestProfileUI;
-    private  final GuestEditPhoneUI guestEditPhoneUI;
+    private final GuestEditPhoneUI guestEditPhoneUI;
 
-    public GuestManagementUI(App app, String userID){
-        this.app=app;
-        this.userID=userID;
-        guestProfileUI=new GuestProfileUI(app,userID);
-        guestEditPhoneUI=new GuestEditPhoneUI(app,userID);
+    public GuestManagementUI(App app, String userID) {
+        this.app = app;
+        this.userID = userID;
+        guestProfileUI = new GuestProfileUI(app, userID);
+        guestEditPhoneUI = new GuestEditPhoneUI(app, userID);
     }
 
     @Override
-    public void run(){
+    public void run() {
         int choice;
-        do{
+        do {
             ConsolePrint.clear();
-            ConsolePrint.menu("Guest Management","1. My profile","2. Change my phone number","0. LogOut");
-            choice=app.input().readInt("Option: ");
-            switch (choice){
-                case 1->guestProfileUI.run();
-                case 2->guestEditPhoneUI.run();
-                case 0 -> {return;}
+            ConsolePrint.menu("Guest Management", "1. My profile", "2. Change my phone number", "0. LogOut");
+            choice = app.input().readInt("Option: ");
+            switch (choice) {
+                case 1 -> guestProfileUI.run();
+                case 2 -> guestEditPhoneUI.run();
+                case 0 -> {
+                    return;
+                }
                 default -> {
-                    app.input().pressAnyKey("Invalid choice! Press [ENTER] key to continue....",app.input().ERROR);
+                    app.input().pressAnyKey("Invalid choice! Press [ENTER] key to continue....", app.input().ERROR);
                 }
             }
-        }while (choice != 0);
+        } while (choice != 0);
 
     }
 }

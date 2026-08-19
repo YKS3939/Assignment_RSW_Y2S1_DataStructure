@@ -14,8 +14,8 @@ import java.util.Objects;
 public class RoomController {
     private final Database database;
 
-    public RoomController(Database database){
-        this.database=database;
+    public RoomController(Database database) {
+        this.database = database;
     }
 
     public String findSet(Room room) {
@@ -29,22 +29,22 @@ public class RoomController {
             }
         }
 
-        throw new RuntimeException("The room not found");
+        throw new RuntimeException("Room not found");
     }
 
-    public ArrayList<Room> viewAllRoom(){
-            ArrayList<Room> items=new ArrayList<>(25);
-            for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
-                String enumName=statusEnum.getName();
-                ArraySet<Room> list=database.roomADT().get(enumName);
-                if (list != null) {
-                    for (int i = 0; i < list.getSize(); i++) {
-                        items.add(list.get(i));
-                    }
+    public ArrayList<Room> viewAllRoom() {
+        ArrayList<Room> items = new ArrayList<>(25);
+        for (RoomStatusEnum statusEnum : RoomStatusEnum.values()) {
+            String enumName = statusEnum.getName();
+            ArraySet<Room> list = database.roomADT().get(enumName);
+            if (list != null) {
+                for (int i = 0; i < list.getSize(); i++) {
+                    items.add(list.get(i));
                 }
             }
-            return items;
         }
+        return items;
+    }
 
     public boolean isRoomAvailable() {
         for (int i = 0; i < database.roomADT().get("Ready").getSize(); i++) {
@@ -56,11 +56,11 @@ public class RoomController {
         return false;
     }
 
-    public ArrayList<Room> getAvailableRoom(){
-        ArrayList<Room> items=new ArrayList<>(25);
+    public ArrayList<Room> getAvailableRoom() {
+        ArrayList<Room> items = new ArrayList<>(25);
         for (int i = 0; i < database.roomADT().get("Ready").getSize(); i++) {
-            Room item=database.roomADT().get("Ready").get(i);
-            if (item.isOnService()){
+            Room item = database.roomADT().get("Ready").get(i);
+            if (item.isOnService()) {
                 items.add(item);
             }
         }
@@ -70,7 +70,7 @@ public class RoomController {
     public boolean isExistSet(String roomNum, String setName) {
         ArraySet<Room> roomSet = database.roomADT().get(setName);
 
-        if (roomSet == null) {return false;}
+        if (roomSet == null) return false;
 
         for (int i = 0; i < roomSet.getSize(); i++) {
             Room item = roomSet.get(i);
@@ -84,7 +84,7 @@ public class RoomController {
 
     public int nextSet(String status) {
         int now = RoomStatusEnum.fromName(status);
-        return (now >= 4) ? 1:now + 1;
+        return (now >= 4) ? 1 : now + 1;
     }
 
     public String nextName(int status) {
@@ -108,14 +108,14 @@ public class RoomController {
         }
     }
 
-    public void changeRoomOnService(String roomNum,boolean onService){
-        //TODO:need check
-        String roomPlace= findSet(new Room(roomNum));
+    public void changeRoomOnService(String roomNum, boolean onService) {
+        // TODO:need check
+        String roomPlace = findSet(new Room(roomNum));
         database.roomADT().get(roomPlace).get(new Room(roomNum)).setOnService(onService);
-        database.roomDAO().changeService(roomNum,onService);
+        database.roomDAO().changeService(roomNum, onService);
     }
 
-    public Room find(String roomNum){
+    public Room find(String roomNum) {
         if (roomNum.trim().isEmpty()) {
             return null;
         }

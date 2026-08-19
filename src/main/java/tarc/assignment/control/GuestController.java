@@ -15,26 +15,26 @@ import java.util.Objects;
 public class GuestController {
     private final Database database;
 
-    public GuestController(Database database){
-        this.database=database;
+    public GuestController(Database database) {
+        this.database = database;
     }
 
-    public String addCustomer(String name,String phoneNum){
+    public String addCustomer(String name, String phoneNum) {
         try {
             String custId = NumGenerate.generateDigit(6);
 
             GuestValidate.validateName(name);
             GuestValidate.validatePhone(phoneNum);
 
-            while (true){
-                if (isIdExist(custId)){
-                    custId=NumGenerate.generateDigit(6);
-                }else{
+            while (true) {
+                if (isIdExist(custId)) {
+                    custId = NumGenerate.generateDigit(6);
+                } else {
                     break;
                 }
             }
 
-            Guest guest=new Guest(custId,name,1,0,phoneNum);
+            Guest guest = new Guest(custId, name, 1, 0, phoneNum);
             this.database.guestDAO().create(guest);
             this.database.guestADT().insert(guest);
             return custId;
@@ -47,36 +47,37 @@ public class GuestController {
         return database.guestADT().search(new Guest(id)) != null;
     }
 
-    public boolean login(String userID,String phoneNum) {
+    public boolean login(String userID, String phoneNum) {
         try {
             Guest guest = database.guestADT().search(new Guest(userID));
             if (Objects.equals(guest.getId(), userID) && Objects.equals(guest.getPhoneNum(), phoneNum)) {
                 return true;
             }
             return false;
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return false;
         }
     }
 
-    public Guest find(String userID){
-        try{
-            Guest data=database.guestADT().search(new Guest(userID));
-            if (data==null){
+    public Guest find(String userID) {
+        try {
+            Guest data = database.guestADT().search(new Guest(userID));
+            if (data == null) {
                 throw new NullPointerException();
             }
             return data;
-        }catch (NullPointerException e){
-            throw new RuntimeException("Not Found the User");
+        } catch (NullPointerException e) {
+            throw new RuntimeException("User not found");
         }
     }
-    public ArrayList<Guest> getAll(){
+
+    public ArrayList<Guest> getAll() {
         return database.guestDAO().readAll();
     }
 
-    public void changeTier(String userID,int tier){
+    public void changeTier(String userID, int tier) {
         if (tier < 1 || tier > 4) {
-            throw new RuntimeException("Not found member tier level");
+            throw new RuntimeException("Member tier level not found");
         }
 
         Guest guest = database.guestADT().search(new Guest(userID));
@@ -84,17 +85,18 @@ public class GuestController {
             guest.setMemberTier(tier);
             database.guestDAO().updateMemberTier(userID, tier);
 
-            Reservation reservation=database.reservationRepository().findByCustomerId(userID);
-            if (reservation!=null){
-                database.reservationDAO().updateMemberTier(reservation.getConfirmationNum(),tier);
+            Reservation reservation = database.reservationRepository().findByCustomerId(userID);
+            if (reservation != null) {
+                database.reservationDAO().updateMemberTier(reservation.getConfirmationNum(), tier);
                 database.loadReservationADT();
             }
-        }else{
-            throw new RuntimeException("User are not Found");
+        } else {
+            throw new RuntimeException("User not found");
         }
         database.loadGuestADT();
     }
-    public void changePhone(String userID,String phoneNum){
+
+    public void changePhone(String userID, String phoneNum) {
         try {
             GuestValidate.validatePhone(phoneNum);
             Guest guest = database.guestADT().search(new Guest(userID));
@@ -102,10 +104,10 @@ public class GuestController {
                 guest.setPhoneNum(phoneNum);
                 database.guestDAO().updatePhoneNum(userID, phoneNum);
             } else {
-                throw new RuntimeException("User are not Found");
+                throw new RuntimeException("User not found");
             }
             database.loadGuestADT();
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
     }

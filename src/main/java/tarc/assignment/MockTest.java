@@ -13,50 +13,54 @@ public class MockTest {
     public static void main(String[] args) {
         Database database = new Database();
         App app = new App(database);
-        ArrayList<Room> cleanRoom= database.roomADT().get("Cleaning").all();
+        ArrayList<Room> cleanRoom = database.roomADT().get("Cleaning").all();
         ArrayList<Room> dirtyRooms = database.roomADT().get("Dirty").all();
         ArrayList<Room> inspectRooms = database.roomADT().get("Inspected").all();
         ArrayList<Room> readyRooms = database.roomADT().get("Ready").all();
 
-//        app.taskController().pushTask("101",3,4);
-//        database.roomDAO().changeStatus("303",4);
-//        Room room=app.roomController().find(new Room("101"));
-//        System.out.println(room.getRoomPrice());
-//        database.roomDAO().changeService("303",true);
-//        CheckIn data=database.checkInRepository().findByConfirmNum("33208955");
-//        Reservation reservation=new Reservation(String.valueOf(30875605),String.valueOf(555555),2, Instant.now());
-//        app.reservationController().addRegistration(app.guestController(),String.valueOf(555555));
-//        Reservation data=app.database().reservationRepository().findByConfirmNum(String.valueOf(30875605));
-//        System.out.println(database.reservationRepository().findByConfirmNum("79891638").getCustomerId());
-//        System.out.println(data.getRoomNum());
-//        Room special=database.roomADT().get("Dirty").get(new Room(String.valueOf(301)));
-//        System.out.println("Result "+special);
-//        RoomController roomController=new RoomController(database);
-//        roomController.changeRoomOnService("101",true);
-//        System.out.println(database.roomADT().get(RoomStatusEnum.fromCode(3)).get(new Room("101")));
-//        ArrayList<CheckIn> checkInArrayList=database.checkInDAO().readAll();
-//        System.out.println(checkInArrayList.getSize());
-//        String res=roomController.findSet(new Room("202"));
-//        System.out.println(res);
-//        ArrayList<Room> list=roomController.getAvailableRoom();
-//        for (int i = 0; i < list.getSize(); i++) {
-//            System.out.println(list.get(i));
-//        }
-//        roomController.updateRoomStatus(String.valueOf(301),1);
+        // app.taskController().pushTask("101",3,4);
+        // database.roomDAO().changeStatus("303",4);
+        // Room room=app.roomController().find(new Room("101"));
+        // System.out.println(room.getRoomPrice());
+        // database.roomDAO().changeService("303",true);
+        // CheckIn data=database.checkInRepository().findByConfirmNum("33208955");
+        // Reservation reservation=new
+        // Reservation(String.valueOf(30875605),String.valueOf(555555),2,
+        // Instant.now());
+        // app.reservationController().addRegistration(app.guestController(),String.valueOf(555555));
+        // Reservation
+        // data=app.database().reservationRepository().findByConfirmNum(String.valueOf(30875605));
+        // System.out.println(database.reservationRepository().findByConfirmNum("79891638").getCustomerId());
+        // System.out.println(data.getRoomNum());
+        // Room special=database.roomADT().get("Dirty").get(new
+        // Room(String.valueOf(301)));
+        // System.out.println("Result "+special);
+        // RoomController roomController=new RoomController(database);
+        // roomController.changeRoomOnService("101",true);
+        // System.out.println(database.roomADT().get(RoomStatusEnum.fromCode(3)).get(new
+        // Room("101")));
+        // ArrayList<CheckIn> checkInArrayList=database.checkInDAO().readAll();
+        // System.out.println(checkInArrayList.getSize());
+        // String res=roomController.findSet(new Room("202"));
+        // System.out.println(res);
+        // ArrayList<Room> list=roomController.getAvailableRoom();
+        // for (int i = 0; i < list.getSize(); i++) {
+        // System.out.println(list.get(i));
+        // }
+        // roomController.updateRoomStatus(String.valueOf(301),1);
 
-
-//
-//        for (int i = 0; i < cleanRoom.getSize(); i++) {
-//            System.out.println("Cleaning "+cleanRoom.get(i).getRoomNum());
-//        }
-//        for (int i = 0; i < dirtyRooms.getSize(); i++) {
-//            System.out.println("Dirty "+dirtyRooms.get(i).getRoomNum());
-//        }
-//        for (int i = 0; i < inspectRooms.getSize(); i++) {
-//            System.out.println("Inspected "+inspectRooms.get(i).getRoomNum());
-//        }
-//        for (int i = 0; i < readyRooms.getSize(); i++) {
-//            System.out.println("Ready "+readyRooms.get(i).getRoomNum());
-//        }
+        //
+        // for (int i = 0; i < cleanRoom.getSize(); i++) {
+        // System.out.println("Cleaning "+cleanRoom.get(i).getRoomNum());
+        // }
+        // for (int i = 0; i < dirtyRooms.getSize(); i++) {
+        // System.out.println("Dirty "+dirtyRooms.get(i).getRoomNum());
+        // }
+        // for (int i = 0; i < inspectRooms.getSize(); i++) {
+        // System.out.println("Inspected "+inspectRooms.get(i).getRoomNum());
+        // }
+        // for (int i = 0; i < readyRooms.getSize(); i++) {
+        // System.out.println("Ready "+readyRooms.get(i).getRoomNum());
+        // }
     }
 }

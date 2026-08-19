@@ -17,43 +17,50 @@ public class App {
     private final CheckOutController checkOutController;
     private final Database database;
 
-    private final Boot boot=new Boot();
-
-    public App(Database database){
-        Scanner scanner=new Scanner(System.in);
+    public App(Database database) {
+        Scanner scanner = new Scanner(System.in);
         input = new ConsoleInput(scanner);
-        this.database=database;
+        this.database = database;
 
-        guestController=new GuestController(database);
-        reservationController=new ReservationController(database);
-        roomController=new RoomController(database);
-        checkInController=new CheckInController(database);
-        taskController=new TaskController(database);
-        checkOutController=new CheckOutController(database);
+        guestController = new GuestController(database);
+        reservationController = new ReservationController(database);
+        roomController = new RoomController(database);
+        checkInController = new CheckInController(database);
+        taskController = new TaskController(database);
+        checkOutController = new CheckOutController(database);
     }
 
-    public ConsoleInput input(){
+    public ConsoleInput input() {
         return input;
     }
 
-    //Controller
-    public GuestController guestController(){
+    // Controller
+    public GuestController guestController() {
         return guestController;
     }
 
-    public ReservationController reservationController(){
+    public ReservationController reservationController() {
         return reservationController;
     }
 
-    public RoomController roomController(){return roomController;}
+    public RoomController roomController() {
+        return roomController;
+    }
 
-    public CheckInController checkInController(){return checkInController;}
+    public CheckInController checkInController() {
+        return checkInController;
+    }
 
-    public TaskController taskController(){return taskController;}
+    public TaskController taskController() {
+        return taskController;
+    }
 
-    public CheckOutController checkOutController(){return checkOutController;}
+    public CheckOutController checkOutController() {
+        return checkOutController;
+    }
 
-    public Database database(){return database;}
-
+    public Database database() {
+        return database;
+    }
 
 }
