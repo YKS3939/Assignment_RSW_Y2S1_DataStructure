@@ -2,7 +2,10 @@ package tarc.assignment.entity;
 
 import java.time.Instant;
 
-public class Reservation implements Comparable<Reservation>{
+/**
+ * Ng Zhun Onn
+ */
+public class Reservation implements Comparable<Reservation> {
     private String confirmationNum;
     private String customerId;
     private int memberTier;

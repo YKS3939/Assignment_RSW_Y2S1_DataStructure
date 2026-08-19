@@ -5,7 +5,6 @@ import tarc.assignment.core.App;
 import tarc.assignment.core.api.UI;
 import tarc.assignment.util.Environment;
 
-//Must new for each mock or recreate
 public class CheckInProcessUI implements UI {
     private final App app;
     private final String confirmationNum;
@@ -22,15 +21,14 @@ public class CheckInProcessUI implements UI {
     @Override
     public void run() {
         try {
-            int day = app.input().readInt("How many days do you want to stay here:");
+            int day = app.input().readInt("Number of days of your stay: ");
             boolean meal = app.input().readYesNo("Add breakfast meal set [RM " + Environment.get("fee.meal") + "/day]?");
             availableRoomUI.run();
-            String roomNum = app.input().readString("Your room number selection:");
-            boolean result = app.checkInController().checkIn(app.roomController(), confirmationNum, roomNum, customerId,
-                    meal, day);
+            String roomNum = app.input().readString("Your room number selection: ");
+            boolean result = app.checkInController().checkIn(app.roomController(), confirmationNum, roomNum, customerId, meal, day);
             if (result) {
                 app.reservationController().dropReservation(confirmationNum);
-                app.input().pressAnyKey("CheckIn success", app.input().SUCCESS);
+                app.input().pressAnyKey("Check In successful", app.input().SUCCESS);
             }
         } catch (RuntimeException e) {
             // e.printStackTrace();

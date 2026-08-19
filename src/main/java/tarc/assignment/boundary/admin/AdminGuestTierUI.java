@@ -16,14 +16,14 @@ public class AdminGuestTierUI implements UI {
     @Override
     public void run() {
         try {
-            String userID = this.app.input().readString("Enter Guest ID:");
+            String userID = this.app.input().readString("Enter Guest ID: ");
             Guest guest = app.guestController().find(userID);
             String memberTier = MemberTierEnum.fromCode(guest.getMemberTier());
-            ConsolePrint.menu("User Information", "User Id :" + guest.getId(), "Name :" + guest.getName(), "Phone Number :" + guest.getPhoneNum(), "Member Level :" + memberTier, "MemberPoint :" + guest.getMemberPoint());
+            ConsolePrint.menu("User Information", "User Id:  " + guest.getId(), "Name: " + guest.getName(), "Phone Number: " + guest.getPhoneNum(), "Member Level: " + memberTier, "MemberPoint: " + guest.getMemberPoint());
             boolean choice = app.input().readYesNo("Continue ?");
             if (choice) {
                 ConsolePrint.menu("Choose Tier", "[1] Basic", "[2] Elite", "[3] Diamond", "[4] Platinum");
-                int selection = app.input().readInt("Selection :");
+                int selection = app.input().readInt("Selection: ");
                 app.guestController().changeTier(guest.getId(), selection);
                 app.input().pressAnyKey("Member tier updated successfully", app.input().SUCCESS);
             } else {

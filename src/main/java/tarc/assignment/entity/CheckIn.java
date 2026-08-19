@@ -2,6 +2,9 @@ package tarc.assignment.entity;
 
 import java.time.Instant;
 
+/**
+ * Ng Zhun Onn
+ */
 public class CheckIn {
     private String confirmationNum;
     private String roomNum;

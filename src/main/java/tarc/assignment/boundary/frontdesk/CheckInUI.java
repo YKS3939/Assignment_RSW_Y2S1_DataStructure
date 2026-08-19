@@ -7,34 +7,35 @@ import tarc.assignment.util.ConsolePrint;
 
 public class CheckInUI implements UI {
     private final App app;
-    public CheckInUI(App app){
-        this.app=app;
+
+    public CheckInUI(App app) {
+        this.app = app;
     }
 
     @Override
-    public void run(){
-        try{
+    public void run() {
+        try {
             char choice;
             ConsolePrint.clear();
-            Reservation reservation=app.reservationController().viewNextGuest();
-            ConsolePrint.menu("Check-In","Confirmation Id :"+reservation.getConfirmationNum(),"Guest Id :"+reservation.getCustomerId(),"Guest Name :"+app.guestController().find(reservation.getCustomerId()).getName());
-            choice=app.input().readChar("Continue to check in process? (y=continue;n=cancelled;d=drop reservation)\nSelection :");
-            switch (Character.toLowerCase(choice)){
-                case 'y'->{
-                    boolean roomAvailable=app.roomController().isRoomAvailable();
+            Reservation reservation = app.reservationController().viewNextGuest();
+            ConsolePrint.menu("Check-In", "Confirmation Id: " + reservation.getConfirmationNum(), "Guest Id: " + reservation.getCustomerId(), "Guest Name: " + app.guestController().find(reservation.getCustomerId()).getName());
+            choice = app.input().readChar("Continue to check in process? (y=continue; n=cancel; d=drop reservation)\nSelection: ");
+            switch (Character.toLowerCase(choice)) {
+                case 'y' -> {
+                    boolean roomAvailable = app.roomController().isRoomAvailable();
                     if (!roomAvailable) throw new RuntimeException("Doesn't have available clean room");
-                    CheckInProcessUI checkInProcessUI=new CheckInProcessUI(app, reservation.getConfirmationNum(), reservation.getCustomerId());
+                    CheckInProcessUI checkInProcessUI = new CheckInProcessUI(app, reservation.getConfirmationNum(), reservation.getCustomerId());
                     checkInProcessUI.run();
                 }
-                case 'n'->throw new RuntimeException("Process Cancelled");
-                case 'd'-> {
+                case 'n' -> throw new RuntimeException("Process Cancelled");
+                case 'd' -> {
                     app.reservationController().dropReservation(reservation.getConfirmationNum());
-                    app.input().pressAnyKey("Drop Reservation "+reservation.getConfirmationNum(),app.input().SUCCESS);
+                    app.input().pressAnyKey("Drop Reservation " + reservation.getConfirmationNum(), app.input().SUCCESS);
                 }
                 default -> throw new RuntimeException("Invalid choice! Press [ENTER] key to continue....");
             }
-        }catch (RuntimeException e){
-            app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
+        } catch (RuntimeException e) {
+            app.input().pressAnyKey(e.getMessage(), app.input().ERROR);
         }
     }
 }

@@ -6,10 +6,11 @@ import java.util.Scanner;
 
 public class ConsoleInput {
     private final Scanner scanner;
-    public final int SUCCESS=1;
-    public final int ERROR=2;
-    public ConsoleInput(Scanner scanner){
-        this.scanner=scanner;
+    public final int SUCCESS = 1;
+    public final int ERROR = 2;
+
+    public ConsoleInput(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public int readInt(String prompt) {
@@ -27,17 +28,18 @@ public class ConsoleInput {
     public void pressAnyKey() {
         scanner.nextLine();
     }
-    public void pressAnyKey(String prompt,int type) {
-        switch (type){
-            case SUCCESS->ConsolePrint.success(prompt);
-            case ERROR->ConsolePrint.error(prompt);
+
+    public void pressAnyKey(String prompt, int type) {
+        switch (type) {
+            case SUCCESS -> ConsolePrint.success(prompt);
+            case ERROR -> ConsolePrint.error(prompt);
             default -> ConsolePrint.println(prompt);
         }
 
         scanner.nextLine();
     }
 
-    public String readString(String prompt){
+    public String readString(String prompt) {
         ConsolePrint.print(prompt);
         return scanner.nextLine();
     }
@@ -50,7 +52,7 @@ public class ConsoleInput {
 
     public boolean readYesNo(String prompt) {
         while (true) {
-            ConsolePrint.print(prompt + " (y/n) :");
+            ConsolePrint.print(prompt + " (y/n): ");
             String input = scanner.nextLine().trim().toLowerCase();
             if ("y".equals(input) || "yes".equals(input)) {
                 return true;

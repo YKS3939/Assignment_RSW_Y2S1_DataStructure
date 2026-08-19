@@ -37,7 +37,7 @@ public class MainUI implements UI {
         int choice;
         do{
             ConsolePrint.clear();
-            ConsolePrint.menu(Environment.get("app.name"),"1. FrontDesk Staff","2. HouseKeeping Staff","3. Guest","4. Admin","0. Exit Program");
+            ConsolePrint.menu(Environment.get("app.name"),"1. Front Desk Staff","2. House Keeping Staff", "3. Guest", "4. Admin", "0. Exit Program");
             choice=app.input().readInt("Option: ");
             switch (choice){
                 case 1 -> frontDeskUI.run();

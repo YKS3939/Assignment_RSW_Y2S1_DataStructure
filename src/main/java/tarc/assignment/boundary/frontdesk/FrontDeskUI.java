@@ -1,13 +1,10 @@
 package tarc.assignment.boundary.frontdesk;
 
-//import tarc.assignment.boundary.frontdesk.customer.CustomerUI;
-//import tarc.assignment.boundary.frontdesk.customer.registerUI;
 import tarc.assignment.boundary.room.ViewAllRoomUI;
 import tarc.assignment.core.App;
 import tarc.assignment.core.api.UI;
 import tarc.assignment.util.ConsolePrint;
 
-//WEN TING
 public class FrontDeskUI implements UI {
     private final App app;
     private final CheckInUI checkInUI;

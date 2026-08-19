@@ -14,8 +14,8 @@ public class RegisterGuestUI implements UI {
     @Override
     public void run() {
         try {
-            String name = app.input().readString("Enter your name :");
-            String phoneNum = app.input().readString("Enter your phoneNum(without '-') :");
+            String name = app.input().readString("Enter your name: ");
+            String phoneNum = app.input().readString("Enter your phone number (without '-'): ");
             String confirmationNum = this.app.guestController().addCustomer(name, phoneNum);
 
             ConsolePrint.success(ConsolePrint.SINGLE_LINE + "\nRegistration successful, your 8-digit confirmation number is " + confirmationNum + ".\nPlease keep it carefully\n" + ConsolePrint.SINGLE_LINE);

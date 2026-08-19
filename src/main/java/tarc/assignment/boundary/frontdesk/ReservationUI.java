@@ -17,12 +17,12 @@ public class ReservationUI implements UI {
     public void run() {
         try {
             char choice;
-            String userID = this.app.input().readString("Enter Guest ID :");
+            String userID = this.app.input().readString("Enter Guest ID: ");
             Guest guest = app.guestController().find(userID);
             String memberTier = MemberTierEnum.fromCode(guest.getMemberTier());
-            ConsolePrint.menu("User Information", "User Id :" + guest.getId(), "Name :" + guest.getName(), "Phone Number :" + guest.getPhoneNum(), "Member Level :" + memberTier, "MemberPoint :" + guest.getMemberPoint());
+            ConsolePrint.menu("User Information", "User Id: " + guest.getId(), "Name: " + guest.getName(), "Phone Number: " + guest.getPhoneNum(), "Member Level: " + memberTier, "MemberPoint: " + guest.getMemberPoint());
 
-            choice = app.input().readChar("Continue reservation (y/n)?");
+            choice = app.input().readChar("Continue reservation (y/n)? ");
             if (Character.toLowerCase(choice) != 'y') {
                 throw new RuntimeException("Reservation Cancelled");
             }

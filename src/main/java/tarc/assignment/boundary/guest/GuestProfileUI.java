@@ -21,8 +21,8 @@ public class GuestProfileUI implements UI {
             ConsolePrint.clear();
             Guest guest = app.guestController().find(userID);
             String memberTier = MemberTierEnum.fromCode(guest.getMemberTier());
-            ConsolePrint.menu("User Profile","User Id :"+guest.getId(),"Name :"+guest.getName(),"Phone Number :"+guest.getPhoneNum(),"Member Level :"+memberTier,"MemberPoint :"+guest.getMemberPoint());
-            app.input().pressAnyKey( "Press [ENTER] key to continue....",app.input().SUCCESS);
+            ConsolePrint.menu("User Profile", "User Id: " + guest.getId(), "Name: " + guest.getName(), "Phone Number: " + guest.getPhoneNum(),"Member Level: " + memberTier, "Member Points: " + guest.getMemberPoint());
+            app.input().pressAnyKey("Press [ENTER] key to continue....", app.input().SUCCESS);
         } catch (RuntimeException e) {
             app.input().pressAnyKey(e.getMessage(), app.input().ERROR);
         }

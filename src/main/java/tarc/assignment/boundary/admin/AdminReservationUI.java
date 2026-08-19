@@ -30,13 +30,13 @@ public class AdminReservationUI implements UI {
                 String vipGuestName = (vipGuest != null) ? vipGuest.getName() : "Unknown";
 
                 ConsolePrint.menu("Next VIP Booking",
-                        "Confirmation Number : " + vip.getConfirmationNum(),
-                        "Customer ID :" + vip.getCustomerId(),
-                        "Customer Name :" + vipGuestName,
-                        "Member Tier :" + MemberTierEnum.fromCode(vip.getMemberTier()),
-                        "Reservation At :" + RubyTime.convertFormat(vip.getCreateAt(), "yyyy-MM-dd hh:mm a")
+                        "Confirmation Number: " + vip.getConfirmationNum(),
+                        "Customer ID: " + vip.getCustomerId(),
+                        "Customer Name: " + vipGuestName,
+                        "Member Tier: " + MemberTierEnum.fromCode(vip.getMemberTier()),
+                        "Reservation At: " + RubyTime.convertFormat(vip.getCreateAt(), "yyyy-MM-dd hh:mm a")
                 );
-                ConsolePrint.println("Remain number of VIP Booking :"+app.database().vipBookingADT().getSize());
+                ConsolePrint.println("Remain number of VIP Booking: "+app.database().vipBookingADT().getSize());
                 ConsolePrint.drawLine();
 
             } else {
@@ -49,13 +49,13 @@ public class AdminReservationUI implements UI {
                 String stdGuestName = (stdGuest != null) ? stdGuest.getName() : "Unknown";
 
                 ConsolePrint.menu("Next Standard Booking",
-                        "Confirmation Number : " + standard.getConfirmationNum(),
-                        "Customer ID :" + standard.getCustomerId(),
-                        "Customer Name :" + stdGuestName,
-                        "Member Tier :" + MemberTierEnum.fromCode(standard.getMemberTier()),
-                        "Reservation At :" + RubyTime.convertFormat(standard.getCreateAt(), "yyyy-MM-dd hh:mm a")
+                        "Confirmation Number:  " + standard.getConfirmationNum(),
+                        "Customer ID: " + standard.getCustomerId(),
+                        "Customer Name: " + stdGuestName,
+                        "Member Tier: " + MemberTierEnum.fromCode(standard.getMemberTier()),
+                        "Reservation At: " + RubyTime.convertFormat(standard.getCreateAt(), "yyyy-MM-dd hh:mm a")
                 );
-                ConsolePrint.println("Remain number of Standard Booking :"+app.database().standardBookingADT().getSize());
+                ConsolePrint.println("Remain number of Standard Booking: "+app.database().standardBookingADT().getSize());
                 ConsolePrint.drawLine();
             } else {
                 ConsolePrint.error( "No Standard booking in queue.");

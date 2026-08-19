@@ -15,7 +15,7 @@ public class AdminGuestSearchUI implements UI {
     @Override
     public void run() {
         try {
-            String userID = this.app.input().readString("Enter Guest ID:");
+            String userID = this.app.input().readString("Enter Guest ID: ");
             Guest guest = app.guestController().find(userID);
             if (guest != null) {
                 GuestProfileUI guestProfileUI = new GuestProfileUI(this.app, userID);

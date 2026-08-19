@@ -15,7 +15,7 @@ public class GuestEditPhoneUI implements UI {
     @Override
     public void run() {
         try {
-            String phoneNum = app.input().readString("Enter your new phone number (without '-') :");
+            String phoneNum = app.input().readString("Enter your new phone number (without '-'): ");
             app.guestController().changePhone(userID, phoneNum);
             app.input().pressAnyKey("Change Phone number success", app.input().SUCCESS);
         } catch (RuntimeException e) {
