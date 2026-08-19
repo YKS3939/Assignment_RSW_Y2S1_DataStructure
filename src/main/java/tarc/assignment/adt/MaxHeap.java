@@ -6,7 +6,7 @@ package tarc.assignment.adt;
 import tarc.assignment.core.api.HeapInterface;
 
 /**
- *  Yap Kim Soon
+ * Yap Kim Soon
  */
 public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
     private T[] heap;
@@ -14,9 +14,9 @@ public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
     private static final int DEFAULT_CAPACITY = 25;
 
     @SuppressWarnings("unchecked")
-    public MaxHeap(int initialCapacity){
+    public MaxHeap(int initialCapacity) {
         heap = (T[]) new Comparable[initialCapacity];
-        size=0;
+        size = 0;
     }
 
     public MaxHeap() {
@@ -24,17 +24,17 @@ public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
     }
 
     @Override
-    public int getSize(){
+    public int getSize() {
         return size;
     }
 
     @Override
-    public boolean isEmpty(){
-        return size==0;
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     @Override
-    public T peek(){
+    public T peek() {
         if (isEmpty()) {
             return null;
         }
@@ -42,38 +42,38 @@ public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
     }
 
     @Override
-    public void clear(){
-        for (int i=0;i<size;i++){
-            heap[i]=null;
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            heap[i] = null;
         }
-        size=0;
+        size = 0;
     }
 
     @Override
-    public boolean isFull(){
-        return size==heap.length;
+    public boolean isFull() {
+        return size == heap.length;
     }
 
     @Override
-    public T extract(){
+    public T extract() {
         if (isEmpty()) {
             return null;
         }
-        T root=heap[0];
+        T root = heap[0];
         heap[0] = heap[size - 1];
         size--;
-        if (!isEmpty()){
+        if (!isEmpty()) {
             shiftDown(0);
         }
         return root;
     }
 
     @Override
-    public void insert(T item){
+    public void insert(T item) {
         if (isFull()) {
             extend();
         }
-        heap[size]=item;
+        heap[size] = item;
         shiftUp(size);
         size++;
     }
@@ -92,8 +92,8 @@ public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
         heap[j] = data;
     }
 
-    //this method are use AI - Yap Kim Soon
-    private void shiftDown(int index){
+    // this method are use AI - Yap Kim Soon
+    private void shiftDown(int index) {
         int left = 2 * index + 1;
         while (left < size) {
             int maxChild = left;
@@ -112,21 +112,14 @@ public class MaxHeap<T extends Comparable<T>> implements HeapInterface<T> {
             left = 2 * index + 1;
         }
     }
-    private void shiftUp(int index){
-        //parent: (i-1) / 2
-         int parent = (index - 1) / 2;
-            while (index > 0 && heap[index].compareTo(heap[parent]) > 0) {
-                swap(index, parent);
-                index = parent;
-                parent = (index - 1) / 2;
-            }
+
+    private void shiftUp(int index) {
+        // parent: (i-1) / 2
+        int parent = (index - 1) / 2;
+        while (index > 0 && heap[index].compareTo(heap[parent]) > 0) {
+            swap(index, parent);
+            index = parent;
+            parent = (index - 1) / 2;
+        }
     }
-    //    public void insert(T item)
-    //    public T extractMax()
-    //    public T peekMax()
-    //    private void shiftUp(int index)
-    //    private void shiftDown(int index)
-    //    public int size()
-    //    public boolean isEmpty()
-    //    public void clear()
 }

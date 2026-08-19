@@ -3,57 +3,49 @@ package tarc.assignment.adt;
 import tarc.assignment.core.api.StackInterface;
 
 /**
- *  Ma Chun Yen
+ * Ma Chun Yen
  */
 @Deprecated
 public class ArrayStack<T> implements StackInterface<T> {
     private ArrayList<T> stack;
     private static final int DEFAULT_CAPACITY = 25;
 
-    public ArrayStack(){
+    public ArrayStack() {
         stack = new ArrayList<>(DEFAULT_CAPACITY);
     }
 
     @Override
-    public void push(T item){
+    public void push(T item) {
         stack.add(item);
     }
 
     @Override
-    public T pop(){
+    public T pop() {
         if (isEmpty()) {
             return null;
         }
-        return stack.remove(stack.getSize()-1);
+        return stack.remove(stack.getSize() - 1);
     }
 
     @Override
-    public T peek(){
+    public T peek() {
         if (isEmpty()) {
             return null;
         }
-        return stack.get(stack.getSize()-1);
+        return stack.get(stack.getSize() - 1);
     }
 
     @Override
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return stack.isEmpty();
     }
 
-    public boolean isFull(){
-        return false;//Unlimited knp nk true
+    public boolean isFull() {
+        return false;// Unlimited knp nk true
     }
 
     @Override
-    public void clear(){
+    public void clear() {
         stack.clear();
     }
-//
-//    public void push(T item)
-//    public T pop()
-//    public boolean isEmpty()
-//    public boolean isFull()
-//    public T peek()
-//    public void clear()
-
 }

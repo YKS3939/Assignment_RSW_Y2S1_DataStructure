@@ -3,7 +3,7 @@ package tarc.assignment.adt;
 import tarc.assignment.core.api.SetInterface;
 
 /**
- *  Yap Kim Soon & Ng Zhun Onn
+ * Yap Kim Soon & Ng Zhun Onn
  */
 public class ArraySet<T extends Comparable<T>> implements SetInterface<T> {
     private final ArrayList<T> items;
