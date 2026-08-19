@@ -21,7 +21,7 @@ public class Database {
     private final LinkedQueue<Reservation> standardBookingADT=new LinkedQueue<>();
     private final MaxHeap<Reservation> vipBookingADT=new MaxHeap<>();
 //    private final HashTable<String,Reservation> reservationADT=new HashTable<>();
-    private final LinkedStack<Task> taskADT=new LinkedStack<>();
+    private final ArrayList<Task> taskADT=new ArrayList<>(25);
     private final HashTable<String, ArraySet<Room>> roomADT=new HashTable<>();
     private final ArrayList<CheckOut> checkOutADT=new ArrayList<>(25);
 
@@ -68,7 +68,7 @@ public class Database {
 
     public HashTable<String, ArraySet<Room>> roomADT(){return roomADT;}
 
-    public LinkedStack<Task> taskADT(){return taskADT;}
+    public ArrayList<Task> taskADT(){return taskADT;}
 
     public ArrayList<CheckOut> checkOutADT(){return checkOutADT;}
 
@@ -137,7 +137,7 @@ public class Database {
         taskADT.clear();
         ArrayList<Task> list = taskDAO.readAll();
         for (int i = 0; i < list.getSize(); i++) {
-            taskADT.push(list.get(i));
+            taskADT.add(list.get(i));
         }
     }
 
