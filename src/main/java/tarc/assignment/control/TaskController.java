@@ -15,19 +15,27 @@ public class TaskController {
         this.database=database;
     }
 
-    public void pushTask(RoomController roomController,String roomNum,int beforeStatus,int afterStatus){
+    public void addTask(RoomController roomController,String roomNum,int beforeStatus,int afterStatus){
         String ulid= NumGenerate.generadeULID();
         Task newTask=new Task(ulid,roomNum,beforeStatus,afterStatus, RubyTime.timeNow());
         roomController.changeRoomStatus(roomNum,afterStatus);
         database.taskDAO().create(newTask);
-        database.taskADT().push(newTask);
+        database.taskADT().add(newTask);
     }
 
-    public Task peekRevert(){
-        return database.taskADT().peek();
+    public ArrayList<Task> getTaskList(){
+        return database.taskADT();
     }
-    public void revertTask(RoomController roomController){
-        Task task=database.taskADT().pop();
+
+    public Task getTask(int index){
+        return database.taskADT().get(index);
+    }
+
+    public void revertTask(RoomController roomController, int index){
+        Task task=database.taskADT().remove(index);
+        if (task == null) {
+            throw new RuntimeException("Task not found");
+        }
         roomController.changeRoomStatus(task.getRoomNum(),task.getBeforeStatus());
         database.taskDAO().deleteById(task.getId());
     }
