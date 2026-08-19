@@ -4,7 +4,6 @@ import tarc.assignment.adt.ArrayList;
 import tarc.assignment.core.Database;
 import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.CheckOut;
-import tarc.assignment.entity.Room;
 import tarc.assignment.util.Environment;
 import tarc.assignment.util.NumGenerate;
 import tarc.assignment.util.RubyTime;

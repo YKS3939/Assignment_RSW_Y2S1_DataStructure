@@ -1,7 +1,6 @@
 package tarc.assignment.core;
 
 import java.awt.*;
-import java.io.File;
 import java.time.*;
 import javax.sound.sampled.*;
 import javax.swing.*;

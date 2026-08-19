@@ -1,7 +1,6 @@
 package tarc.assignment.dao;
 
 import tarc.assignment.adt.ArrayList;
-import tarc.assignment.entity.Guest;
 import tarc.assignment.entity.Reservation;
 import tarc.assignment.util.RubyFile;
 

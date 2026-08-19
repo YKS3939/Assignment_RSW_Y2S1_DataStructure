@@ -1,7 +1,6 @@
 package tarc.assignment.repository;
 
 import tarc.assignment.adt.HashTable;
-import tarc.assignment.entity.CheckIn;
 import tarc.assignment.entity.Reservation;
 
 public class ReservationRepository {
