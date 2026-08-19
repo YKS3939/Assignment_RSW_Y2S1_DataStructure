@@ -23,7 +23,7 @@ public class HousekeepingUI implements UI {
         int choice;
         do {
             ConsolePrint.clear();
-            ConsolePrint.menu("HouseKeeping","1. View all room","2. Update room cleaning status","3. Revert last changes","0. Back to Main Menu");
+            ConsolePrint.menu("HouseKeeping","1. View all room","2. Update room cleaning status","3. Revert a room change","0. Back to Main Menu");
             choice=app.input().readInt("Option: ");
             switch (choice){
                 case 1->viewAllRoomUI.run();
