@@ -7,29 +7,28 @@ import tarc.assignment.repository.CheckInRepository;
 import tarc.assignment.repository.ReservationRepository;
 
 /**
- * Yap Kim Soon, Ma Chun Yen,Goh Wen Ting ,Ng Zhun Onn
+ * Yap Kim Soon, Ma Chun Yen, Goh Wen Ting, Ng Zhun Onn
  */
 public class Database {
-    private final GuestDAO guestDAO=new GuestDAO();
-    private final ReservationDAO reservationDAO=new ReservationDAO();
-    private final RoomDAO roomDAO=new RoomDAO();
-    private final CheckInDAO checkInDAO=new CheckInDAO();
-    private final TaskDAO taskDAO=new TaskDAO();
-    private final CheckOutDAO checkOutDAO=new CheckOutDAO();
+    private final GuestDAO guestDAO = new GuestDAO();
+    private final ReservationDAO reservationDAO = new ReservationDAO();
+    private final RoomDAO roomDAO = new RoomDAO();
+    private final CheckInDAO checkInDAO = new CheckInDAO();
+    private final TaskDAO taskDAO = new TaskDAO();
+    private final CheckOutDAO checkOutDAO = new CheckOutDAO();
 
-    private final BinaryTree<Guest> guestADT=new BinaryTree<>();
-    private final LinkedQueue<Reservation> standardBookingADT=new LinkedQueue<>();
-    private final MaxHeap<Reservation> vipBookingADT=new MaxHeap<>();
-//    private final HashTable<String,Reservation> reservationADT=new HashTable<>();
-    private final ArrayList<Task> taskADT=new ArrayList<>(25);
-    private final HashTable<String, ArraySet<Room>> roomADT=new HashTable<>();
-    private final ArrayList<CheckOut> checkOutADT=new ArrayList<>(25);
+    private final BinaryTree<Guest> guestADT = new BinaryTree<>();
+    private final LinkedQueue<Reservation> standardBookingADT = new LinkedQueue<>();
+    private final MaxHeap<Reservation> vipBookingADT = new MaxHeap<>();
+    // private final HashTable<String,Reservation> reservationADT=new HashTable<>();
+    private final ArrayList<Task> taskADT = new ArrayList<>(25);
+    private final HashTable<String, ArraySet<Room>> roomADT = new HashTable<>();
+    private final ArrayList<CheckOut> checkOutADT = new ArrayList<>(25);
 
-    private final CheckInRepository checkInRepository=new CheckInRepository();
-    private final ReservationRepository reservationRepository=new ReservationRepository();
+    private final CheckInRepository checkInRepository = new CheckInRepository();
+    private final ReservationRepository reservationRepository = new ReservationRepository();
 
-
-    public Database(){
+    public Database() {
         loadGuestADT();
         loadReservationADT();
         loadRoomADT();
@@ -38,45 +37,65 @@ public class Database {
         loadCheckOutADT();
     }
 
-    public GuestDAO guestDAO(){
+    public GuestDAO guestDAO() {
         return guestDAO;
     }
 
-    public ReservationDAO reservationDAO(){return reservationDAO;}
+    public ReservationDAO reservationDAO() {
+        return reservationDAO;
+    }
 
-    public RoomDAO roomDAO(){return roomDAO;}
+    public RoomDAO roomDAO() {
+        return roomDAO;
+    }
 
-    public CheckInDAO checkInDAO(){return checkInDAO;}
+    public CheckInDAO checkInDAO() {
+        return checkInDAO;
+    }
 
-    public TaskDAO taskDAO(){return taskDAO;}
+    public TaskDAO taskDAO() {
+        return taskDAO;
+    }
 
-    public BinaryTree<Guest> guestADT(){
+    public BinaryTree<Guest> guestADT() {
         return guestADT;
     }
 
-    public CheckOutDAO checkOutDAO(){return  checkOutDAO;}
+    public CheckOutDAO checkOutDAO() {
+        return checkOutDAO;
+    }
 
-//    public HashTable<String,Reservation> reservationADT(){return reservationADT;}
+    // public HashTable<String,Reservation> reservationADT(){return reservationADT;}
 
-    public LinkedQueue<Reservation> standardBookingADT(){
+    public LinkedQueue<Reservation> standardBookingADT() {
         return standardBookingADT;
     }
 
-    public MaxHeap<Reservation> vipBookingADT(){
+    public MaxHeap<Reservation> vipBookingADT() {
         return vipBookingADT;
     }
 
-    public HashTable<String, ArraySet<Room>> roomADT(){return roomADT;}
+    public HashTable<String, ArraySet<Room>> roomADT() {
+        return roomADT;
+    }
 
-    public ArrayList<Task> taskADT(){return taskADT;}
+    public ArrayList<Task> taskADT() {
+        return taskADT;
+    }
 
-    public ArrayList<CheckOut> checkOutADT(){return checkOutADT;}
+    public ArrayList<CheckOut> checkOutADT() {
+        return checkOutADT;
+    }
 
-    public CheckInRepository checkInRepository(){return checkInRepository;}
+    public CheckInRepository checkInRepository() {
+        return checkInRepository;
+    }
 
-    public ReservationRepository reservationRepository(){return reservationRepository;}
+    public ReservationRepository reservationRepository() {
+        return reservationRepository;
+    }
 
-    public void loadGuestADT(){
+    public void loadGuestADT() {
         guestADT.clear();
         ArrayList<Guest> List = guestDAO.readAll();
         for (int i = 0; i < List.getSize(); i++) {
@@ -86,9 +105,10 @@ public class Database {
             }
         }
     }
-    public void loadReservationADT(){
+
+    public void loadReservationADT() {
         reservationRepository.clear();
-//        reservationADT.clear();
+        // reservationADT.clear();
         standardBookingADT.clear();
         vipBookingADT.clear();
 
@@ -97,14 +117,15 @@ public class Database {
             Reservation item = List.get(i);
             if (item != null) {
                 reservationRepository.add(item);
-                if (item.getMemberTier()> MemberTierEnum.BASIC.getCode()){
+                if (item.getMemberTier() > MemberTierEnum.BASIC.getCode()) {
                     vipBookingADT.insert(item);
-                }else{
+                } else {
                     standardBookingADT.enqueue(item);
                 }
             }
         }
     }
+
     private void loadRoomADT() {
         roomADT.clear();
         for (RoomStatusEnum status : RoomStatusEnum.values()) {
@@ -124,8 +145,8 @@ public class Database {
         }
     }
 
-    private void loadCheckInRepo(){
-        //TODO: add clear
+    private void loadCheckInRepo() {
+        // TODO: add clear
         checkInRepository.clear();
         ArrayList<CheckIn> list = checkInDAO.readAll();
         for (int i = 0; i < list.getSize(); i++) {
@@ -133,7 +154,7 @@ public class Database {
         }
     }
 
-    private void loadTaskADT(){
+    private void loadTaskADT() {
         taskADT.clear();
         ArrayList<Task> list = taskDAO.readAll();
         for (int i = 0; i < list.getSize(); i++) {
@@ -141,9 +162,9 @@ public class Database {
         }
     }
 
-    private void loadCheckOutADT(){
+    private void loadCheckOutADT() {
         checkOutADT.clear();
-        ArrayList<CheckOut> list=checkOutDAO.readAll();
+        ArrayList<CheckOut> list = checkOutDAO.readAll();
         for (int i = 0; i < list.getSize(); i++) {
             checkOutADT.add(list.get(i));
         }

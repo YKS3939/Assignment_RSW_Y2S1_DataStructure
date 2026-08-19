@@ -9,8 +9,9 @@ import tarc.assignment.util.ConsolePrint;
 
 public class HousekeepingProcessUI implements UI {
     private final App app;
-    public HousekeepingProcessUI(App app){
-        this.app=app;
+
+    public HousekeepingProcessUI(App app) {
+        this.app = app;
     }
 
     @Override
@@ -60,7 +61,5 @@ public class HousekeepingProcessUI implements UI {
         } catch (RuntimeException e) {
             app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
         }
-
-
     }
 }

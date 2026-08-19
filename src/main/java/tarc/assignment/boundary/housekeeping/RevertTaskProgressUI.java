@@ -10,11 +10,13 @@ import tarc.assignment.util.RubyTime;
 
 public class RevertTaskProgressUI implements UI {
     private final App app;
-    public RevertTaskProgressUI(App app){
-        this.app=app;
+
+    public RevertTaskProgressUI(App app) {
+        this.app = app;
     }
+
     @Override
-    public void run(){
+    public void run() {
         try {
             ArrayList<Task> tasks = app.taskController().getTaskList();
             if (tasks == null || tasks.isEmpty()) {
@@ -52,15 +54,16 @@ public class RevertTaskProgressUI implements UI {
                 throw new RuntimeException("Invalid task selection");
             }
 
-            boolean choice=app.input().readYesNo("The room "+task.getRoomNum()+" will revert ["+ RoomStatusEnum.fromCode(task.getAfterStatus())+"] to ["+RoomStatusEnum.fromCode(task.getBeforeStatus())+"] ,Continue?");
-            if (choice){
+            boolean choice = app.input()
+                    .readYesNo("The room " + task.getRoomNum() + " will revert [" + RoomStatusEnum.fromCode(task.getAfterStatus()) + "] to [" + RoomStatusEnum.fromCode(task.getBeforeStatus()) + "] ,Continue?");
+            if (choice) {
                 app.taskController().revertTask(app.roomController(), selection - 1);
-                app.input().pressAnyKey("Revert Back Success",app.input().SUCCESS);
-            }else{
+                app.input().pressAnyKey("Revert Back Success", app.input().SUCCESS);
+            } else {
                 throw new RuntimeException("Action cancelled");
             }
-        }catch (RuntimeException e){
-            app.input().pressAnyKey(e.getMessage(),app.input().ERROR);
+        } catch (RuntimeException e) {
+            app.input().pressAnyKey(e.getMessage(), app.input().ERROR);
         }
 
     }
