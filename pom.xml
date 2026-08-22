@@ -39,8 +39,11 @@
                             <module name="TreeWalker">
                                 <module name="RegexpSinglelineJava">
                                     <property name="format" value="import\s+java\.util\.(?!(Scanner|Objects|Date|Comparator|Properties|regex\..*|concurrent\..*);)(.*|\*);"/>
-                                    <property name="message" value="Warning,Disallow use external data structure"/>
+                                    <property name="message" value="Warning, Disallow use external data structure"/>
                                     <property name="ignoreComments" value="true"/>
+                                </module>
+                                <module name="AvoidStarImport">
+                                    <property name="severity" value="error"/>
                                 </module>
                             </module>
                         </module>
@@ -48,6 +51,32 @@
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.2.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
