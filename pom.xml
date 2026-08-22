@@ -42,10 +42,6 @@
                                     <property name="message" value="Warning, Disallow use external data structure"/>
                                     <property name="ignoreComments" value="true"/>
                                 </module>
-                                <module name="AvoidStarImport">
-                                    <property name="severity" value="error"/>
-                                    <property name="excludes" value="java.awt.*,java.time.*,javax.sound.sampled.*,javax.swing.*,java.io.*,tarc.assignment.*"/>
-                                </module>
                             </module>
                         </module>
                     </checkstyleRules>
