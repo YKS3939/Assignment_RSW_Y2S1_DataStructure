@@ -37,9 +37,10 @@
                     <checkstyleRules>
                         <module name="Checker">
                             <module name="TreeWalker">
-                                <module name="IllegalImport">
-                                    <property name="illegalPkgs" value="java.util"/>
-                                    <property name="exemptClasses" value="java.util.Scanner, java.util.Objects, java.util.Comparator, java.util.Date"/>
+                                <module name="RegexpSinglelineJava">
+                                    <property name="format" value="import\s+java\.util\.(?!(Scanner|Objects|Date|Comparator);)(.*|\*);"/>
+                                    <property name="message" value="Warning,Disallow use external data structure"/>
+                                    <property name="ignoreComments" value="true"/>
                                 </module>
                             </module>
                         </module>
