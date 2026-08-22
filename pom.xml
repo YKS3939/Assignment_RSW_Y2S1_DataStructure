@@ -38,7 +38,7 @@
                         <module name="Checker">
                             <module name="TreeWalker">
                                 <module name="RegexpSinglelineJava">
-                                    <property name="format" value="import\s+java\.util\.(?!(Scanner|Objects|Date|Comparator);)(.*|\*);"/>
+                                    <property name="format" value="import\s+java\.util\.(?!(Scanner|Objects|Date|Comparator|Properties|regex\..*|concurrent\..*);)(.*|\*);"/>
                                     <property name="message" value="Warning,Disallow use external data structure"/>
                                     <property name="ignoreComments" value="true"/>
                                 </module>
