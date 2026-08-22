@@ -8,6 +8,7 @@ import java.util.Scanner;
  * Yap Kim Soon, Ma Chun Yen,Goh Wen Ting ,Ng Zhun Onn
  */
 public class App {
+    private final Boot boot=new Boot();
     private final ConsoleInput input;
     private final GuestController guestController;
     private final ReservationController reservationController;
@@ -16,6 +17,7 @@ public class App {
     private final TaskController taskController;
     private final CheckOutController checkOutController;
     private final Database database;
+
 
     public App(Database database) {
         Scanner scanner = new Scanner(System.in);

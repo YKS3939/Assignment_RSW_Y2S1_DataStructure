@@ -1,11 +1,11 @@
 package tarc.assignment.adt;
 
-import tarc.assignment.core.api.HashInterface;
+import tarc.assignment.core.api.MapInterface;
 
 /**
  * Goh Wen Ting
  */
-public class HashTable<K, V> implements HashInterface<K, V> {
+public class HashTable<K, V> implements MapInterface<K, V> {
     private static final int DEFAULT_CAPACITY = 10;
     private ArrayList<Node>[] room = new ArrayList[DEFAULT_CAPACITY];
 

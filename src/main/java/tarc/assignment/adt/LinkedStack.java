@@ -5,6 +5,7 @@ import tarc.assignment.core.api.StackInterface;
 /**
  * Ma Chun Yen
  */
+@Deprecated
 public class LinkedStack<T> implements StackInterface<T> {
     private Node top;
     private int size;

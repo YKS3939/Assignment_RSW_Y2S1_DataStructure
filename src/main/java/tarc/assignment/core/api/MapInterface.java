@@ -5,7 +5,7 @@ package tarc.assignment.core.api;
  * @param <K>
  * @param <V>
  */
-public interface HashInterface <K,V>{
+public interface MapInterface<K,V>{
     void add(K key, V value);
     V get(K key);
     void remove(K key);
