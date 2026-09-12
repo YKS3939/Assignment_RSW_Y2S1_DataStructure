@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Yap Kim Soon, Ma Chun Yen,Goh Wen Ting ,Ng Zhun Onn
  */
 public class App {
-    private final Boot boot=new Boot();
+//    private final Boot boot=new Boot();
     private final ConsoleInput input;
     private final GuestController guestController;
     private final ReservationController reservationController;
